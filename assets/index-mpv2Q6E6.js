@@ -59,12 +59,11 @@ Looking to build a web application or collaborate with Arpit? Connect directly b
   GPT-4, Google Gemini, Claude, LLaMA jaise models billions of parameters par train hote hain aur natural language me human-like reasoning karte hain.
 
 • **Web Apps me AI kaise use hota hai?**
-  ✓ AI Chatbots (24/7 intelligent customer assistance)
-  ✓ Gemini / OpenAI API integration (Automatic content, summaries, product recommendations)
+  ✓ AI Chatbots (24/7 customer assistance)
+  ✓ Gemini / OpenAI API integration (Automated content, summaries, product recommendations)
   ✓ Vector search & semantic search (Pinecone, LangChain)
 
-📌 **Aapke Project ke liye Recommendation**:
-Agar aap apne project me AI chatbots, automated content generation, ya smart recommendations add karna chahte hain, toh Arpit Gemini/OpenAI API integrate karke ise scalable bana sakte hain. Poochiye: *"Mere project me AI kaise kaam karega?"* ya direct Arpit se WhatsApp par discuss karein!`,actions:[{label:`💡 Mere project me AI kaise use hoga?`,query:`How can I integrate AI into my project?`},{label:`🎯 Project me kaun se features add karein?`,query:`What features should I add to my web project?`},{label:`💬 WhatsApp par project me AI discuss karein`,url:`https://wa.me/919696725794?text=Hi%20Arpit,%20mujhe%20apne%20project%20me%20AI%20integrate%20karwana%20hai.`,primary:!0}]}:{text:`🤖 **Artificial Intelligence (AI) & Generative AI (GenAI) Overview**:
+Arpit Rai aapke custom web apps me Gemini aur OpenAI APIs smoothly integrate kar sakte hain!`,actions:[{label:`🚀 Live Projects Dekhein`,url:`#featured`,primary:!0},{label:`💡 Tech Stack Advice`,query:`I am confused which technology to use for my project`},{label:`💬 WhatsApp par discuss karein`,url:`https://wa.me/919696725794?text=Hi%20Arpit,%20mujhe%20apne%20project%20me%20AI%20integrate%20karwana%20hai.`}]}:{text:`🤖 **Artificial Intelligence (AI) & Generative AI (GenAI) Overview**:
 
 • **What is AI?**
   Artificial Intelligence is the simulation of human intelligence by computer systems, encompassing machine learning, NLP, computer vision, and autonomous reasoning.
@@ -81,8 +80,7 @@ Agar aap apne project me AI chatbots, automated content generation, ya smart rec
   ✓ REST API integration with OpenAI & Google Gemini endpoints
   ✓ Vector search & RAG using LangChain and vector databases
 
-📌 **Recommendation for Your Project**:
-Looking to leverage AI in your web application (such as smart chatbots, automated data extraction, or personalized feeds)? Arpit seamlessly connects Gemini and OpenAI APIs to full-stack backends. Ask: *"How can I integrate AI into my project?"* or connect directly with Arpit!`,actions:[{label:`💡 How to integrate AI in my project?`,query:`How can I integrate AI into my project?`},{label:`🎯 Suggest Features for my Project`,query:`What features should I add to my web project?`},{label:`💬 Discuss AI for my project on WhatsApp`,url:`https://wa.me/919696725794?text=Hi%20Arpit,%20I%20want%20to%20integrate%20AI%20into%20my%20project.`,primary:!0}]}:n.includes(`cloud`)||n.includes(`aws`)||n.includes(`azure`)||n.includes(`gcp`)||n.includes(`google cloud`)||n.includes(`serverless`)||n.includes(`docker`)||n.includes(`container`)||n.includes(`kubernetes`)||n.includes(`devops`)||n.includes(`ci/cd`)||n.includes(`cicd`)||n.includes(`render`)||n.includes(`vercel`)||n.includes(`hosting`)||n.includes(`deploy`)||n.includes(`s3`)||n.includes(`cdn`)||n.includes(`cloud kya`)?i?{text:`☁️ **Cloud Computing & Modern DevOps Guide**:
+Arpit can integrate LLM APIs and intelligent automated workflows directly into your web applications!`,actions:[{label:`🚀 Explore Featured Projects`,url:`#featured`,primary:!0},{label:`💡 Tech Stack Advice`,query:`I am confused which technology to use for my project`},{label:`💬 Discuss AI on WhatsApp`,url:`https://wa.me/919696725794?text=Hi%20Arpit,%20I%20want%20to%20integrate%20AI%20into%20my%20project.`}]}:n.includes(`cloud`)||n.includes(`aws`)||n.includes(`azure`)||n.includes(`gcp`)||n.includes(`google cloud`)||n.includes(`serverless`)||n.includes(`docker`)||n.includes(`container`)||n.includes(`kubernetes`)||n.includes(`devops`)||n.includes(`ci/cd`)||n.includes(`cicd`)||n.includes(`render`)||n.includes(`vercel`)||n.includes(`hosting`)||n.includes(`deploy`)||n.includes(`s3`)||n.includes(`cdn`)||n.includes(`cloud kya`)?i?{text:`☁️ **Cloud Computing & Modern DevOps Guide**:
 
 • **Cloud Computing kya hota hai?**
   Internet ke zariye on-demand computing services (servers, storage, databases, networking, software) provide karna bina kisi physical hardware ko khud manage kiye.
@@ -97,8 +95,7 @@ Looking to leverage AI in your web application (such as smart chatbots, automate
   - **Render & Vercel**: Fullstack aur MERN web apps ko seconds me live deploy karne ke liye.
   - **Docker & CI/CD**: Consistent containers aur automatic deployment with GitHub Actions.
 
-📌 **Aapke Project ke liye Salah (Project Recommendation)**:
-Aapke project ke traffic aur budget ke hisaab se best cloud hosting (Render vs Vercel vs AWS) choose karna bohot zaroori hai. Poochiye: *"Mere project ke liye kaun si cloud hosting best hai?"* ya Arpit se direct setup karwayein!`,actions:[{label:`☁️ Mere project ke liye best cloud hosting?`,query:`Which cloud hosting is best for my project?`},{label:`💡 Kaun sa tech stack use karein?`,query:`I am confused which technology to use for my project`},{label:`💬 WhatsApp par cloud setup discuss karein`,url:`https://wa.me/919696725794?text=Hi%20Arpit,%20mujhe%20apne%20project%20ki%20cloud%20hosting%20ke%20bare%20me%20discuss%20karna%20hai.`,primary:!0}]}:{text:`☁️ **Cloud Computing, Infrastructure & DevOps Essentials**:
+Arpit aapke projects ko Render, Vercel aur AWS cloud par securely deploy aur configure karte hain!`,actions:[{label:`🚀 Arpit ke Live Deployed Apps dekhein`,url:`#featured`,primary:!0},{label:`💡 Tech Stack Advice`,query:`I am confused which technology to use for my project`},{label:`💬 WhatsApp par cloud discuss karein`,url:`https://wa.me/919696725794?text=Hi%20Arpit,%20mujhe%20apne%20project%20ki%20cloud%20hosting%20ke%20bare%20me%20discuss%20karna%20hai.`}]}:{text:`☁️ **Cloud Computing, Infrastructure & DevOps Essentials**:
 
 • **What is Cloud Computing?**
   The on-demand delivery of IT resources (compute servers, database storage, networking, AI capabilities) over the internet with pay-as-you-go pricing, eliminating the need to maintain on-premise hardware.
@@ -113,8 +110,7 @@ Aapke project ke traffic aur budget ke hisaab se best cloud hosting (Render vs V
   ✓ **Serverless Computing**: Event-driven execution (AWS Lambda, Vercel Serverless Functions) scaling to zero.
   ✓ **CI/CD Pipelines**: Automated test and build verification with GitHub Actions.
 
-📌 **Recommendation for Your Project**:
-Choosing the right deployment architecture (Vercel vs Render vs AWS) is crucial for keeping your server costs low while scaling effortlessly. Ask: *"Which cloud hosting is best for my project?"* or consult Arpit for cloud setup!`,actions:[{label:`☁️ Best Cloud Hosting for my project?`,query:`Which cloud hosting is best for my project?`},{label:`💡 Choose best Tech Stack for my project`,query:`I am confused which technology to use for my project`},{label:`💬 Consult Cloud Architecture on WhatsApp`,url:`https://wa.me/919696725794?text=Hi%20Arpit,%20I%20need%20cloud%20deployment%20guidance%20for%20my%20project.`,primary:!0}]}:n.includes(`full stack`)||n.includes(`fullstack`)||n.includes(`mern`)||n.includes(`mean stack`)||n.includes(`3-tier`)||n.includes(`three tier`)||n.includes(`full stack kya`)||n.includes(`mern kya`)?i?{text:`💻 **Full Stack Development & MERN Stack Complete Guide**:
+Arpit builds, dockerizes, and deploys scalable production web systems on Render, Vercel, and modern cloud infrastructure!`,actions:[{label:`🚀 Inspect Live Cloud Apps`,url:`#featured`,primary:!0},{label:`💡 Tech Stack Advice`,query:`I am confused which technology to use for my project`},{label:`💬 Discuss Cloud Deployment`,url:`https://wa.me/919696725794?text=Hi%20Arpit,%20I%20need%20assistance%20deploying%20my%20app%20to%20the%20cloud.`}]}:n.includes(`full stack`)||n.includes(`fullstack`)||n.includes(`mern`)||n.includes(`mean stack`)||n.includes(`3-tier`)||n.includes(`three tier`)||n.includes(`full stack kya`)||n.includes(`mern kya`)?i?{text:`💻 **Full Stack Development & MERN Stack Complete Guide**:
 
 • **Full Stack Development kya hota hai?**
   Full Stack Developer ek aisa engineer hota hai jo kisi web application ke dono hisse build karta hai:
@@ -128,8 +124,7 @@ Choosing the right deployment architecture (Vercel vs Render vs AWS) is crucial 
   • **R - React.js**: High-performance interactive UI build karne wali library.
   • **N - Node.js**: JavaScript runtime environment jo server par code execute karta hai.
 
-📌 **Aapke Project ke liye Salah (Project Recommendation)**:
-Agar aapka project ek SaaS platform, portal, ERP, ya marketplace hai, toh MERN stack aapko maximum speed aur flexibility dega. Poochiye: *"Kya MERN stack mere project ke liye best hai?"* ya WhatsApp par complete scope discuss karein!`,actions:[{label:`💻 Kya MERN mere project ke liye best hai?`,query:`Is MERN stack best for my project?`},{label:`🎯 Project me kaun se features add karein?`,query:`What features should I add to my web project?`},{label:`💬 Arpit se project MERN plan lein`,url:`https://wa.me/919696725794?text=Hi%20Arpit,%20mujhe%20apne%20project%20ke%20liye%20Full%20Stack%20MERN%20plan%20chahiye.`,primary:!0}]}:{text:`💻 **Full Stack Engineering & The MERN Stack Architecture**:
+Arpit Rai ek specialist **Full Stack MERN Developer** hain jinhone Gym ERP aur GRS Jaise live platforms build kiye hain!`,actions:[{label:`🏋️ Gym ERP Demo dekhein`,url:`https://gym-management-platform.onrender.com`,primary:!0},{label:`🏛️ GRS MERN Portal`,url:`https://grs-mern-client.onrender.com`},{label:`💬 WhatsApp par consult karein`,url:`https://wa.me/919696725794`}]}:{text:`💻 **Full Stack Engineering & The MERN Stack Architecture**:
 
 • **What is Full Stack Development?**
   A Full Stack Engineer designs, implements, and maintains the entire 3-tier architecture of web software:
@@ -143,8 +138,7 @@ Agar aapka project ek SaaS platform, portal, ERP, ya marketplace hai, toh MERN s
   • **R — React.js**: Declarative, component-based frontend library powering single-page applications.
   • **N — Node.js**: High-performance, asynchronous non-blocking I/O JavaScript runtime.
 
-📌 **Recommendation for Your Project**:
-For custom portals, business ERPs, or interactive platforms, the MERN stack offers fastest time-to-market and seamless scalability. Ask: *"Is MERN stack best for my project?"* or get a free architecture consultation!`,actions:[{label:`💻 Is MERN best for my project?`,query:`Is MERN stack best for my project?`},{label:`🎯 What features to add to my project?`,query:`What features should I add to my web project?`},{label:`💬 Discuss Full Stack for your project`,url:`https://wa.me/919696725794?text=Hi%20Arpit,%20I%20want%20to%20discuss%20a%20Full%20Stack%20MERN%20project.`,primary:!0}]}:n.includes(`frontend vs backend`)||n.includes(`backend vs frontend`)||n.includes(`client side vs server`)||n.includes(`frontend kya`)||n.includes(`backend kya`)?i?{text:`🌐 **Frontend vs Backend me kya Antar (Difference) hai?**:
+Arpit Rai specializes in building enterprise-grade MERN stack applications with verified live deployments!`,actions:[{label:`🏋️ Launch Live MERN Gym ERP`,url:`https://gym-management-platform.onrender.com`,primary:!0},{label:`🏛️ Launch Live GRS Portal`,url:`https://grs-mern-client.onrender.com`},{label:`💬 Discuss Full Stack on WhatsApp`,url:`https://wa.me/919696725794`}]}:n.includes(`frontend vs backend`)||n.includes(`backend vs frontend`)||n.includes(`client side vs server`)||n.includes(`frontend kya`)||n.includes(`backend kya`)?i?{text:`🌐 **Frontend vs Backend me kya Antar (Difference) hai?**:
 
 • **Frontend (Client-Side)**:
   - **Kya hai**: Application ka wo chehra jise user browser ya phone me dekhta hai aur click karta hai.
@@ -156,8 +150,7 @@ For custom portals, business ERPs, or interactive platforms, the MERN stack offe
   - **Technologies**: Node.js, Express.js, Python, Java, Go.
   - **Main Kaam**: Business logic, security, password hashing, JWT authentication, payment processing aur database se baat karna.
 
-📌 **Aapke Project ke liye Salah (Project Recommendation)**:
-Aapke project ke client UI (React) aur server APIs (Node.js) ko seamlessly integrate kiya ja sakta hai. Poochiye: *"Mere project ka frontend aur backend kaise connect hoga?"* ya direct quote lein!`,actions:[{label:`💡 Frontend-Backend architecture for my project`,query:`How will frontend and backend connect in my project?`},{label:`🎯 Suggest Features for my Project`,query:`What features should I add to my web project?`},{label:`💬 WhatsApp par project consult karein`,url:`https://wa.me/919696725794`,primary:!0}]}:{text:`🌐 **Frontend vs Backend: Fundamental Differences**:
+Arpit dono frontend aur backend me fully proficient hain, jisse aapko alag-alag developers hire karne ki zaroorat nahi padti!`,actions:[{label:`⚡ REST API kya hoti hai?`,query:`What is a REST API and how does it work?`},{label:`🗄️ SQL vs NoSQL Guide`,query:`What is the difference between SQL and NoSQL databases?`},{label:`💬 Arpit se baat karein`,url:`https://wa.me/919696725794`,primary:!0}]}:{text:`🌐 **Frontend vs Backend: Fundamental Differences**:
 
 • **Frontend (Client-Side)**:
   - **Definition**: The visual interface and client-facing layer executed inside the end user's web browser.
@@ -169,8 +162,7 @@ Aapke project ke client UI (React) aur server APIs (Node.js) ko seamlessly integ
   - **Core Tech**: Node.js, Express.js, Python/Django, Go, Java Spring.
   - **Responsibilities**: Authentication (JWT/OAuth), data authorization, payment processing, background jobs, and database CRUD.
 
-📌 **Recommendation for Your Project**:
-A great product requires seamless coupling between sleek React frontend views and robust Node.js backend endpoints. Ask: *"How will frontend and backend connect in my project?"* or inquire with Arpit!`,actions:[{label:`💡 Frontend-Backend plan for my project`,query:`How will frontend and backend connect in my project?`},{label:`🎯 Suggest Features for my Project`,query:`What features should I add to my web project?`},{label:`💬 Consult Project Architecture on WhatsApp`,url:`https://wa.me/919696725794`,primary:!0}]}:n.includes(`react`)||n.includes(`next.js`)||n.includes(`nextjs`)||n.includes(`javascript`)||n.includes(`typescript`)||n.includes(`html`)||n.includes(`css`)||n.includes(`web technology`)||n.includes(`web tech`)||n.includes(`spa`)||n.includes(`virtual dom`)?i?{text:`🌐 **Modern Web Technologies Complete Guide**:
+Arpit provides end-to-end full stack execution across both layers seamlessly!`,actions:[{label:`⚡ What is a REST API?`,query:`What is a REST API and how does it work?`},{label:`🗄️ SQL vs NoSQL Breakdown`,query:`What is the difference between SQL and NoSQL databases?`},{label:`💬 Hire Arpit for Full Stack`,url:`https://wa.me/919696725794`,primary:!0}]}:n.includes(`react`)||n.includes(`next.js`)||n.includes(`nextjs`)||n.includes(`javascript`)||n.includes(`typescript`)||n.includes(`html`)||n.includes(`css`)||n.includes(`web technology`)||n.includes(`web tech`)||n.includes(`spa`)||n.includes(`virtual dom`)?i?{text:`🌐 **Modern Web Technologies Complete Guide**:
 
 • **HTML5, CSS3 & JavaScript (The Core Foundation)**:
   - **HTML5**: Web page ka structure aur semantic markup (header, nav, section, article, footer).
@@ -187,8 +179,7 @@ A great product requires seamless coupling between sleek React frontend views an
   - Next.js: Server-Side Rendering (SSR) aur top Google SEO rankings ke liye best.
   - TypeScript: JavaScript with static types jo bugs ko runtime se pehle hi catch karta hai.
 
-📌 **Aapke Project ke liye Salah (Project Recommendation)**:
-Aapke project ke purpose (SEO portfolio vs dynamic web app) ke hisaab se React ya Next.js choose karna chahiye. Poochiye: *"Kya React mere project ke liye sahi hai?"* ya Arpit se direct salah lein!`,actions:[{label:`⚛️ Kya React mere project ke liye sahi hai?`,query:`Should I use React for my project?`},{label:`💡 Best tech stack for my project`,query:`I am confused which technology to use for my project`},{label:`💬 WhatsApp par project discuss karein`,url:`https://wa.me/919696725794`,primary:!0}]}:{text:`🌐 **Modern Web Technologies & Frontend Architecture**:
+Arpit Rai in sabhi modern frontend technologies me highly experienced hain!`,actions:[{label:`🚀 Arpit ka React Portfolio dekhein`,url:`#featured`,primary:!0},{label:`⚡ REST APIs Guide`,query:`What is a REST API and how does it work?`},{label:`💬 WhatsApp par project discuss karein`,url:`https://wa.me/919696725794`}]}:{text:`🌐 **Modern Web Technologies & Frontend Architecture**:
 
 • **The Core Web Trio**:
   - **HTML5**: Semantic web architecture, accessibility (a11y), and proper document hierarchy.
@@ -204,8 +195,7 @@ Aapke project ke purpose (SEO portfolio vs dynamic web app) ke hisaab se React y
   - Next.js brings SSR/SSG for maximum SEO visibility.
   - TypeScript delivers static type safety, eliminating whole classes of runtime bugs.
 
-📌 **Recommendation for Your Project**:
-Depending on whether your project requires high SEO rankings (Next.js SSR) or rich dashboard interactions (React SPA), Arpit will recommend the ideal setup. Ask: *"Should I use React for my project?"* or discuss directly!`,actions:[{label:`⚛️ Should I use React for my project?`,query:`Should I use React for my project?`},{label:`💡 Tech Stack Advice for my project`,query:`I am confused which technology to use for my project`},{label:`💬 Discuss Web Project on WhatsApp`,url:`https://wa.me/919696725794`,primary:!0}]}:n.includes(`api`)||n.includes(`rest`)||n.includes(`restful`)||n.includes(`graphql`)||n.includes(`websocket`)||n.includes(`http`)||n.includes(`https`)||n.includes(`status code`)?i?{text:`⚡ **APIs, REST, WebSockets & HTTP Communication Guide**:
+Arpit crafts high-performance web applications leveraging React, Next.js, and modern CSS standards!`,actions:[{label:`🚀 View Arpit’s React Projects`,url:`#featured`,primary:!0},{label:`⚡ Explore REST APIs`,query:`What is a REST API and how does it work?`},{label:`💬 Discuss on WhatsApp`,url:`https://wa.me/919696725794`}]}:n.includes(`api`)||n.includes(`rest`)||n.includes(`restful`)||n.includes(`graphql`)||n.includes(`websocket`)||n.includes(`http`)||n.includes(`https`)||n.includes(`status code`)?i?{text:`⚡ **APIs, REST, WebSockets & HTTP Communication Guide**:
 
 • **API (Application Programming Interface) kya hoti hai?**
   API ek bridge (pul) ki tarah hai jo do alag-alag software programs ko aapas me baat karne ki permission deti hai (e.g., Frontend React app se Backend Node.js server tak data mangwana).
@@ -222,8 +212,7 @@ Depending on whether your project requires high SEO rankings (Next.js SSR) or ri
   - **GraphQL**: Client exact wahi fields mangta hai jo usse chahiye (no over-fetching).
   - **WebSockets**: Bi-directional real-time connection—live chat apps aur stock tickers ke liye best.
 
-📌 **Aapke Project ke liye Salah (Project Recommendation)**:
-Aapke project ke payment gateways, WhatsApp notifications, aur database operations ko secure REST APIs ke zariye connect kiya ja sakta hai. Poochiye: *"Mere project me APIs kaise kaam karengi?"* ya Arpit se consult karein!`,actions:[{label:`⚡ Mere project me REST APIs kaise kaam karengi?`,query:`How will REST API work in my project?`},{label:`🎯 Features kya add karein?`,query:`What features should I add to my web project?`},{label:`💬 WhatsApp par API setup discuss karein`,url:`https://wa.me/919696725794`,primary:!0}]}:{text:`⚡ **APIs, RESTful Architecture, GraphQL & WebSockets Explained**:
+Arpit secure, documented aur fast REST APIs Node.js aur Express me build karte hain!`,actions:[{label:`🔒 JWT Authentication kya hai?`,query:`What is JWT Authentication and how does it secure web apps?`},{label:`🗄️ SQL vs NoSQL Guide`,query:`What is the difference between SQL and NoSQL databases?`},{label:`💬 WhatsApp par consult karein`,url:`https://wa.me/919696725794`,primary:!0}]}:{text:`⚡ **APIs, RESTful Architecture, GraphQL & WebSockets Explained**:
 
 • **What is an API?**
   An Application Programming Interface defines a contract of endpoints, methods, and data formats allowing independent systems to communicate securely over network protocols.
@@ -239,8 +228,7 @@ Aapke project ke payment gateways, WhatsApp notifications, aur database operatio
   - **GraphQL**: Single endpoint query language eliminating over-fetching and under-fetching.
   - **WebSockets**: Persistent, full-duplex TCP channels for real-time collaboration, chat systems, and live telemetry.
 
-📌 **Recommendation for Your Project**:
-From Razorpay/Stripe payments to automated notifications, clean REST APIs power every core feature in your app. Ask: *"How will REST APIs work in my project?"* or connect with Arpit!`,actions:[{label:`⚡ How will REST APIs work in my project?`,query:`How will REST API work in my project?`},{label:`🎯 Features to add to my project`,query:`What features should I add to my web project?`},{label:`💬 Consult API design for your project`,url:`https://wa.me/919696725794`,primary:!0}]}:n.includes(`database`)||n.includes(`sql`)||n.includes(`nosql`)||n.includes(`mongodb`)||n.includes(`mysql`)||n.includes(`postgresql`)||n.includes(`postgres`)||n.includes(`redis`)||n.includes(`acid`)?i?{text:`🗄️ **Databases Complete Guide: SQL vs NoSQL**:
+Arpit engineers robust, scalable RESTful API architectures with strict error handling and security controls!`,actions:[{label:`🔒 What is JWT Authentication?`,query:`What is JWT Authentication and how does it secure web apps?`},{label:`🗄️ SQL vs NoSQL Database Guide`,query:`What is the difference between SQL and NoSQL databases?`},{label:`💬 Consult API Architecture`,url:`https://wa.me/919696725794`,primary:!0}]}:n.includes(`database`)||n.includes(`sql`)||n.includes(`nosql`)||n.includes(`mongodb`)||n.includes(`mysql`)||n.includes(`postgresql`)||n.includes(`postgres`)||n.includes(`redis`)||n.includes(`acid`)?i?{text:`🗄️ **Databases Complete Guide: SQL vs NoSQL**:
 
 • **Database kya hota hai?**
   Data ko securely organize, store, update aur retrieve karne ka electronic system.
@@ -255,8 +243,7 @@ From Razorpay/Stripe payments to automated notifications, clean REST APIs power 
   - **Structure**: Flexible JSON-like documents (BSON).
   - **Strengths**: Rapid schema changes, high horizontal scaling, fast development velocity.
 
-📌 **Aapke Project ke liye Salah (Project Recommendation)**:
-Data structure ke according MongoDB (flexible JSON) ya PostgreSQL (relational tables) select karna project ki performance ke liye critical hai. Poochiye: *"Mere project ke liye kaun sa database best hai?"* ya Arpit se discuss karein!`,actions:[{label:`🗄️ Mere project ke liye kaun sa database best hai?`,query:`Which database is best for my project?`},{label:`💡 Tech Stack Advice for my project`,query:`I am confused which technology to use for my project`},{label:`💬 WhatsApp par database recommendation lein`,url:`https://wa.me/919696725794`,primary:!0}]}:{text:`🗄️ **Database Engineering: SQL vs NoSQL Architectural Analysis**:
+Arpit aapke project ke nature ke hisaab se best database design aur indexing implement karte hain!`,actions:[{label:`🚀 Arpit ke MongoDB Demos dekhein`,url:`#featured`,primary:!0},{label:`⚡ REST API Guide`,query:`What is a REST API and how does it work?`},{label:`💬 WhatsApp par consult karein`,url:`https://wa.me/919696725794`}]}:{text:`🗄️ **Database Engineering: SQL vs NoSQL Architectural Analysis**:
 
 • **Relational Databases (SQL)**:
   - **Engines**: PostgreSQL, MySQL, MariaDB, SQLite.
@@ -268,8 +255,7 @@ Data structure ke according MongoDB (flexible JSON) ya PostgreSQL (relational ta
   - **Data Model**: Semi-structured JSON/BSON document collections.
   - **Strengths**: Dynamic schema flexibility, frictionless horizontal sharding, rapid prototype-to-production velocity, and native JavaScript data structure alignment.
 
-📌 **Recommendation for Your Project**:
-Choosing between MongoDB (unstructured, fast development) and PostgreSQL (strict transactions) depends on your business domain. Ask: *"Which database is best for my project?"* or reach out to Arpit!`,actions:[{label:`🗄️ Which database is best for my project?`,query:`Which database is best for my project?`},{label:`💡 Tech Stack advice for my project`,query:`I am confused which technology to use for my project`},{label:`💬 Consult Database Selection on WhatsApp`,url:`https://wa.me/919696725794`,primary:!0}]}:n.includes(`git`)||n.includes(`jwt`)||n.includes(`authentication`)||n.includes(`auth`)||n.includes(`cors`)||n.includes(`mvc`)||n.includes(`software technology`)||n.includes(`software engineering`)||n.includes(`sdlc`)||n.includes(`testing`)||n.includes(`token`)?i?{text:`🛠️ **Software Engineering, Git & Web Security Guide**:
+Arpit architectures robust schemas with MongoDB and relational databases tailored to scale!`,actions:[{label:`🚀 Explore Live MongoDB Apps`,url:`#featured`,primary:!0},{label:`⚡ REST API Architecture Guide`,query:`What is a REST API and how does it work?`},{label:`💬 WhatsApp Consultation`,url:`https://wa.me/919696725794`,primary:!0}]}:n.includes(`git`)||n.includes(`jwt`)||n.includes(`authentication`)||n.includes(`auth`)||n.includes(`cors`)||n.includes(`mvc`)||n.includes(`software technology`)||n.includes(`software engineering`)||n.includes(`sdlc`)||n.includes(`testing`)||n.includes(`token`)?i?{text:`🛠️ **Software Engineering, Git & Web Security Guide**:
 
 • **Git & GitHub (Version Control)**:
   - Git ek distributed version control system hai jo code changes ko track karta hai.
@@ -282,8 +268,7 @@ Choosing between MongoDB (unstructured, fast development) and PostgreSQL (strict
 • **CORS & Web Security**:
   - Unauthorized cross-domain API access ko block karta hai.
 
-📌 **Aapke Project ke liye Salah (Project Recommendation)**:
-User passwords, admin access aur payment data ko protect karne ke liye JWT authentication aur CORS security aapke project me zaroor honi chahiye. Poochiye: *"Mere project me authentication kaise lagega?"* ya Arpit se security setup karwayein!`,actions:[{label:`🔒 Mere project me authentication kaise lagega?`,query:`How to add authentication and security to my project?`},{label:`🎯 Value-add features for my project`,query:`What features should I add to my web project?`},{label:`💬 WhatsApp par security discuss karein`,url:`https://wa.me/919696725794`,primary:!0}]}:{text:`🛠️ **Software Engineering, Version Control & Security Fundamentals**:
+Arpit industry-standard clean code principles aur secure JWT auth patterns follow karte hain!`,actions:[{label:`🐙 Arpit ka GitHub Profile dekhein`,url:`https://github.com/arpitrai38`,primary:!0},{label:`💻 Full Stack MERN Guide`,query:`What is Full Stack Development and MERN Stack?`},{label:`💬 WhatsApp par discuss karein`,url:`https://wa.me/919696725794`}]}:{text:`🛠️ **Software Engineering, Version Control & Security Fundamentals**:
 
 • **Git & Version Control**:
   - Distributed version control tracking commits, branches, merges, and resolving merge conflicts cleanly.
@@ -296,8 +281,7 @@ User passwords, admin access aur payment data ko protect karne ke liye JWT authe
 • **CORS & Architectural Patterns**:
   - Essential browser security preventing unauthorized cross-origin requests, paired with clean MVC / layered designs.
 
-📌 **Recommendation for Your Project**:
-Hardened JWT authorization, role-based controls (Admin vs User), and CORS security must be built right from Day 1 for your platform. Ask: *"How to add authentication and security to my project?"* or inquire with Arpit!`,actions:[{label:`🔒 How to secure my project with JWT Auth?`,query:`How to add authentication and security to my project?`},{label:`🎯 Essential features for my project`,query:`What features should I add to my web project?`},{label:`💬 Discuss project security on WhatsApp`,url:`https://wa.me/919696725794`,primary:!0}]}:n.includes(`confuse`)||n.includes(`confusion`)||n.includes(`which tech`)||n.includes(`kaun si tech`)||n.includes(`konsi tech`)||n.includes(`kaunsi tech`)||n.includes(`which stack`)||n.includes(`what tech`)||n.includes(`suggest tech`)||n.includes(`choose tech`)||n.includes(`recommend tech`)||n.includes(`stack use`)||n.includes(`technology use`)||n.includes(`tecnology`)||n.includes(`mern or`)||n.includes(`react or`)||n.includes(`best stack`)?i?{text:`Agar aap confused hain ki apne project ke liye **kaun si technology** choose karein, toh bilkul chinta mat kijiye! Project type ke hisaab se best recommendation yeh hai:
+Arpit implements hardened security configurations, clean git workflows, and robust authentication layers!`,actions:[{label:`🐙 Inspect Arpit’s GitHub Code`,url:`https://github.com/arpitrai38`,primary:!0},{label:`💻 Full Stack MERN Overview`,query:`What is Full Stack Development and MERN Stack?`},{label:`💬 Discuss Security on WhatsApp`,url:`https://wa.me/919696725794`,primary:!0}]}:n.includes(`confuse`)||n.includes(`confusion`)||n.includes(`which tech`)||n.includes(`kaun si tech`)||n.includes(`konsi tech`)||n.includes(`kaunsi tech`)||n.includes(`which stack`)||n.includes(`what tech`)||n.includes(`suggest tech`)||n.includes(`choose tech`)||n.includes(`recommend tech`)||n.includes(`stack use`)||n.includes(`technology use`)||n.includes(`tecnology`)||n.includes(`mern or`)||n.includes(`react or`)||n.includes(`best stack`)?i?{text:`Agar aap confused hain ki apne project ke liye **kaun si technology** choose karein, toh bilkul chinta mat kijiye! Project type ke hisaab se best recommendation yeh hai:
 
 1. **Custom Web Application / ERP / SaaS Platform**:
    • **Recommended**: **MERN Stack** (React.js + Node.js + Express.js + MongoDB)
