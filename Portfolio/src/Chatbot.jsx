@@ -4,20 +4,41 @@ import './Chatbot.css'
 
 const BOT_AVATAR = arpitPhoto
 
-// Category quick prompts for one-tap exploration
-const QUICK_PROMPTS = [
-  { label: '💡 Tech Stack Guide', query: 'I am confused which technology to use for my project' },
+// English Quick Prompts Bar
+const QUICK_PROMPTS_EN = [
+  { label: '🤖 What is AI & GenAI?', query: 'What is Artificial Intelligence and Generative AI?' },
+  { label: '☁️ Cloud Computing & AWS', query: 'What is Cloud Computing and AWS?' },
+  { label: '💻 Full Stack & MERN', query: 'What is Full Stack Development and MERN Stack?' },
+  { label: '💡 Tech Stack Advice', query: 'I am confused which technology to use for my project' },
   { label: '🎯 Suggest Features', query: 'What features should I add to my web project?' },
-  { label: '🛒 E-Commerce Guide', query: 'What technology and features are best for an e-commerce website?' },
+  { label: '🌐 Frontend vs Backend', query: 'What is the difference between Frontend and Backend?' },
+  { label: '🗄️ SQL vs NoSQL', query: 'What is the difference between SQL and NoSQL databases?' },
+  { label: '⚡ What is REST API?', query: 'What is a REST API and how does it work?' },
+  { label: '🔒 What is JWT Auth?', query: 'What is JWT Authentication and how does it secure web apps?' },
   { label: '🏋️ Gym ERP Demo', query: 'Show me Gym Management Platform demo' },
   { label: '🏛️ GRS Portal Demo', query: 'Show me Grievance Redressal System' },
-  { label: '💼 Freelance Services', query: 'What freelance services do you offer?' },
-  { label: '💰 Pricing & Timeline', query: 'What is your freelance pricing and timeline?' },
   { label: '📞 Contact Arpit', query: 'How can I contact Arpit directly?' },
+]
+
+// Hindi / Hinglish Quick Prompts Bar
+const QUICK_PROMPTS_HI = [
+  { label: '🤖 AI & GenAI क्या है?', query: 'AI aur Generative AI kya hota hai aur kaise kaam karta hai?' },
+  { label: '☁️ Cloud Computing क्या है?', query: 'Cloud Computing kya hai aur AWS/Render kaise use karte hain?' },
+  { label: '💻 Full Stack & MERN क्या है?', query: 'Full Stack development aur MERN stack kya hota hai?' },
+  { label: '💡 कौन सी Tech चुने?', query: 'Main confuse hoon ki apne project ke liye kaun si technology use karu' },
+  { label: '🎯 Features क्या Add करें?', query: 'Mere project me kaun se best features add karne chahiye?' },
+  { label: '🌐 Frontend vs Backend', query: 'Frontend aur Backend me kya antar hai?' },
+  { label: '🗄️ SQL vs NoSQL डेटाबेस', query: 'SQL aur NoSQL database me kya difference hai aur MongoDB kyu use kare?' },
+  { label: '⚡ REST API क्या होती है?', query: 'REST API kya hoti hai aur frontend-backend kaise connect hote hain?' },
+  { label: '🔒 JWT Auth क्या है?', query: 'JWT Authentication kya hota hai?' },
+  { label: '🏋️ Gym ERP लाइव डेमो', query: 'Gym Management Platform ka live demo dikhao' },
+  { label: '🏛️ GRS पोर्टल डेमो', query: 'GRS Grievance Redressal System ka demo dikhao' },
+  { label: '📞 Arpit से संपर्क करें', query: 'Arpit se directly kaise contact karein?' },
 ]
 
 // Language detector: detects if user is asking in Hindi/Hinglish vs English
 function detectLanguage(rawText) {
+  if (!rawText) return 'en'
   const t = rawText.toLowerCase()
   if (/[\u0900-\u097F]/.test(rawText)) return 'hi' // Devanagari Hindi
 
@@ -27,8 +48,8 @@ function detectLanguage(rawText) {
     'mujhe', 'hum', 'hume', 'bhai', 'bhaiya', 'banwana', 'banani', 'banaye',
     'lagana', 'lagega', 'hoga', 'thik', 'accha', 'acha', 'sahi', 'paise', 'kitna',
     'samajh', 'confuse', 'confusion', 'madad', 'help karo', 'namaste', 'shukriya',
-    'dhanyawad', 'kuch', 'bhi', 'kripya', 'dost', 'bhi', 'daalein', 'dalna',
-    'bataye', 'bataiye', 'tarika', 'sujhav', 'chahiye'
+    'dhanyawad', 'kuch', 'bhi', 'kripya', 'dost', 'daalein', 'dalna',
+    'bataye', 'bataiye', 'tarika', 'sujhav', 'antar', 'bhejo', 'dikhao', 'sikhao'
   ]
 
   let count = 0
@@ -37,17 +58,538 @@ function detectLanguage(rawText) {
     if (regex.test(t)) count++
   }
 
-  return count >= 1 ? 'hinglish' : 'en'
+  return count >= 1 ? 'hi' : 'en'
 }
 
-// Intelligent Knowledge Base & Project Consultant Engine
-function getBotResponse(userQuery) {
+// Comprehensive Knowledge Base Engine: Web Tech, AI, Cloud, Fullstack, Software Engineering, Projects & Contact
+function getBotResponse(userQuery, activeLang = 'en') {
   const q = userQuery.toLowerCase().trim()
-  const lang = detectLanguage(userQuery)
-  const isHi = lang === 'hinglish' || lang === 'hi'
+  const detected = detectLanguage(userQuery)
+  // If user typed in Hindi/Hinglish, prioritize Hindi; otherwise respect active selected language
+  const isHi = detected === 'hi' || (activeLang === 'hi' && detected !== 'en')
 
   // -------------------------------------------------------------
-  // 1. TECHNOLOGY CONSULTING & ADVICE (Customer is confused about tech)
+  // 1. AI (ARTIFICIAL INTELLIGENCE), GENAI, LLMS & MACHINE LEARNING
+  // -------------------------------------------------------------
+  if (
+    q.includes('genai') ||
+    q.includes('generative ai') ||
+    q.includes('what is ai') ||
+    q.includes('ai kya') ||
+    q.includes('artificial intelligence') ||
+    q.includes('machine learning') ||
+    q.includes('llm') ||
+    q.includes('large language model') ||
+    q.includes('chatgpt') ||
+    q.includes('gemini') ||
+    q.includes('prompt engineering') ||
+    q.includes('langchain') ||
+    q.includes('ai in web') ||
+    q.includes('integrate ai') ||
+    q.includes('ai integration') ||
+    q.includes('deep learning') ||
+    q.includes('nlp') ||
+    q === 'ai'
+  ) {
+    if (isHi) {
+      return {
+        text: `🤖 **Artificial Intelligence (AI) & Generative AI (GenAI)**:\n\n` +
+          `• **AI kya hai?**\n` +
+          `  AI aisi computer technology hai jo human intelligence ko simulate karti hai—jaise decision making, problem solving, language understanding aur visual perception.\n\n` +
+          `• **Traditional AI vs Generative AI (GenAI)**:\n` +
+          `  1. **Traditional AI**: Data ko analyze aur classify karta hai (e.g., spam detection, fraud detection, recommendation system).\n` +
+          `  2. **Generative AI (GenAI)**: Naya content create karta hai—jaise naya text (ChatGPT, Gemini), code, images (Midjourney), ya audio.\n\n` +
+          `• **LLMs (Large Language Models)**:\n` +
+          `  GPT-4, Google Gemini, Claude, LLaMA jaise models billions of parameters par train hote hain aur natural language me human-like baatcheet aur complex reasoning karte hain.\n\n` +
+          `• **Web Applications me AI kaise integrate karein?**\n` +
+          `  ✓ **AI Chatbots & Virtual Assistants** (Customer support 24/7)\n` +
+          `  ✓ **OpenAI / Gemini API Integration** (Automated blogs, resume analysis, text summarization)\n` +
+          `  ✓ **Vector Databases & Semantic Search** (Pinecone, ChromaDB, LangChain)\n` +
+          `  ✓ **Personalized Recommendations** (User behavior ke according custom feeds)\n\n` +
+          `Arpit Rai aapke custom web apps me Gemini aur OpenAI APIs smoothly integrate kar sakte hain!`,
+        actions: [
+          { label: '💬 AI Web App banwane ke liye sampark karein', url: 'https://wa.me/919696725794?text=Hi%20Arpit,%20mujhe%20apne%20web%20app%20me%20AI%20integrate%20karwana%20hai.', primary: true },
+          { label: '☁️ Cloud Computing kya hai?', query: 'What is Cloud Computing?' },
+          { label: '💻 Full Stack MERN kya hai?', query: 'What is Full Stack Development?' },
+        ],
+      }
+    } else {
+      return {
+        text: `🤖 **Artificial Intelligence (AI) & Generative AI (GenAI) Overview**:\n\n` +
+          `• **What is AI?**\n` +
+          `  Artificial Intelligence is the simulation of human intelligence by computer systems, encompassing machine learning, natural language processing (NLP), computer vision, and autonomous reasoning.\n\n` +
+          `• **Traditional AI vs Generative AI (GenAI)**:\n` +
+          `  1. **Traditional/Predictive AI**: Learns patterns to categorize, predict, or filter data (e.g., spam detection, credit scoring, recommendation engines).\n` +
+          `  2. **Generative AI (GenAI)**: Generates novel, original content—such as synthetic text, code, high-resolution imagery, and voice—using deep learning transformer architectures.\n\n` +
+          `• **Large Language Models (LLMs)**:\n` +
+          `  Models like GPT-4, Google Gemini, Anthropic Claude, and Meta LLaMA process massive tokenized corpora to understand context, generate code, summarize documents, and power conversational agents.\n\n` +
+          `• **How to Integrate AI into Modern Web Applications**:\n` +
+          `  ✓ **Conversational Assistants**: Embedding intelligent customer service bots with context memory.\n` +
+          `  ✓ **REST APIs & SDKs**: Calling OpenAI, Google Gemini, or HuggingFace endpoints from Node.js backends.\n` +
+          `  ✓ **Vector Search & RAG**: Using Pinecone, Weaviate, or pgvector with LangChain to query custom enterprise documents.\n` +
+          `  ✓ **Automated Workflow**: Auto-generating product descriptions, dynamic email templates, and automated sentiment analysis.\n\n` +
+          `Arpit can integrate LLM APIs and intelligent automated workflows directly into your web applications!`,
+        actions: [
+          { label: '💬 Consult AI Integration on WhatsApp', url: 'https://wa.me/919696725794?text=Hi%20Arpit,%20I%20want%20to%20integrate%20AI/LLM%20into%20my%20web%20application.', primary: true },
+          { label: '☁️ Explore Cloud & DevOps', query: 'What is Cloud Computing and AWS?' },
+          { label: '💻 Full Stack & MERN Stack', query: 'What is Full Stack Development?' },
+        ],
+      }
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 2. CLOUD COMPUTING, AWS, DOCKER & DEVOPS
+  // -------------------------------------------------------------
+  if (
+    q.includes('cloud') ||
+    q.includes('aws') ||
+    q.includes('azure') ||
+    q.includes('gcp') ||
+    q.includes('google cloud') ||
+    q.includes('serverless') ||
+    q.includes('docker') ||
+    q.includes('container') ||
+    q.includes('kubernetes') ||
+    q.includes('devops') ||
+    q.includes('ci/cd') ||
+    q.includes('cicd') ||
+    q.includes('render') ||
+    q.includes('vercel') ||
+    q.includes('hosting') ||
+    q.includes('deploy') ||
+    q.includes('s3') ||
+    q.includes('cdn') ||
+    q.includes('cloud kya')
+  ) {
+    if (isHi) {
+      return {
+        text: `☁️ **Cloud Computing & Modern DevOps Guide**:\n\n` +
+          `• **Cloud Computing kya hota hai?**\n` +
+          `  Internet ke zariye on-demand computing services (servers, storage, databases, networking, software) provide karna bina kisi physical hardware ko khud manage kiye.\n\n` +
+          `• **Cloud Service Models**:\n` +
+          `  1. **IaaS (Infrastructure as a Service)**: Raw servers aur storage (e.g., AWS EC2, Google Compute Engine).\n` +
+          `  2. **PaaS (Platform as a Service)**: Pre-configured app runtime (e.g., Render, Vercel, Heroku, AWS Elastic Beanstalk).\n` +
+          `  3. **SaaS (Software as a Service)**: Ready-to-use software (e.g., Google Drive, Slack, Shopify).\n\n` +
+          `• **Top Cloud Providers**:\n` +
+          `  - **AWS (Amazon Web Services)**: Market leader (EC2, S3, RDS, Lambda).\n` +
+          `  - **Google Cloud Platform (GCP)**: Best for AI/ML, BigData aur Kubernetes.\n` +
+          `  - **Microsoft Azure**: Enterprise companies aur Windows servers ke liye top choice.\n\n` +
+          `• **Modern Deployment & DevOps Tools**:\n` +
+          `  ✓ **Render & Vercel**: Fullstack aur MERN web apps ko seconds me live deploy karne ke liye.\n` +
+          `  ✓ **Docker**: Applications aur unki dependencies ko lightweight container me package karta hai jisse har machine par ek jaisa chale.\n` +
+          `  ✓ **CI/CD (GitHub Actions)**: Code push hote hi automatic testing aur cloud par deployment.\n` +
+          `  ✓ **AWS S3 & Cloudinary**: Images, videos aur documents ko fast speed se CDN ke zariye serve karne ke liye.\n\n` +
+          `Arpit aapke projects ko Render, Vercel aur AWS cloud par securely deploy aur configure karte hain!`,
+        actions: [
+          { label: '🚀 Arpit ke Live Deployed Apps dekhein', url: '#featured', primary: true },
+          { label: '💬 Cloud Deployment me help lein', url: 'https://wa.me/919696725794?text=Hi%20Arpit,%20mujhe%20apne%20app%20ko%20cloud%20par%20deploy%20karne%20me%20help%20chahiye.' },
+          { label: '💻 Fullstack MERN kya hai?', query: 'What is Full Stack Development?' },
+        ],
+      }
+    } else {
+      return {
+        text: `☁️ **Cloud Computing, Infrastructure & DevOps Essentials**:\n\n` +
+          `• **What is Cloud Computing?**\n` +
+          `  The on-demand delivery of IT resources (compute servers, database storage, networking, AI capabilities) over the internet with pay-as-you-go pricing, eliminating the need to maintain on-premise hardware.\n\n` +
+          `• **The 3 Core Cloud Models**:\n` +
+          `  1. **IaaS (Infrastructure as a Service)**: Virtual machines, raw networking, and disks (e.g., AWS EC2, Azure VMs, GCP Compute Engine).\n` +
+          `  2. **PaaS (Platform as a Service)**: Managed application platforms that eliminate OS maintenance (e.g., Render, Vercel, Heroku, AWS App Runner).\n` +
+          `  3. **SaaS (Software as a Service)**: Fully managed end-user web applications (e.g., Jira, Figma, Google Workspace).\n\n` +
+          `• **Key DevOps & Cloud Technologies**:\n` +
+          `  ✓ **Docker & Containerization**: Isolating microservices into standardized, lightweight images that run consistently across development and production environments.\n` +
+          `  ✓ **Serverless Architecture**: Event-driven computing (AWS Lambda, Vercel Serverless Functions) where code runs only when triggered, scaling automatically to zero.\n` +
+          `  ✓ **CI/CD Automation**: Continuous Integration & Delivery via GitHub Actions to automate build checks, test suites, and production rollouts.\n` +
+          `  ✓ **Object Storage & Global CDNs**: AWS S3 and Cloudinary integrated with Cloudflare CDN for ultra-fast asset caching worldwide.\n\n` +
+          `Arpit builds, dockerizes, and deploys scalable production web systems on Render, Vercel, and modern cloud infrastructure!`,
+        actions: [
+          { label: '🚀 Inspect Live Cloud Apps', url: '#featured', primary: true },
+          { label: '💬 Discuss Cloud Deployment on WhatsApp', url: 'https://wa.me/919696725794?text=Hi%20Arpit,%20I%20need%20assistance%20deploying%20my%20app%20to%20the%20cloud.', primary: true },
+          { label: '💻 Full Stack & MERN Architecture', query: 'What is Full Stack Development?' },
+        ],
+      }
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 3. FULL STACK DEVELOPMENT & MERN STACK
+  // -------------------------------------------------------------
+  if (
+    q.includes('full stack') ||
+    q.includes('fullstack') ||
+    q.includes('mern') ||
+    q.includes('mean stack') ||
+    q.includes('3-tier') ||
+    q.includes('three tier') ||
+    q.includes('full stack kya') ||
+    q.includes('mern kya')
+  ) {
+    if (isHi) {
+      return {
+        text: `💻 **Full Stack Development & MERN Stack Complete Guide**:\n\n` +
+          `• **Full Stack Development kya hota hai?**\n` +
+          `  Full Stack Developer ek aisa engineer hota hai jo kisi web application ke dono hisse build karta hai:\n` +
+          `  1. **Frontend (Client-side)**: User Interface jise user browser me dekhta aur interact karta hai.\n` +
+          `  2. **Backend (Server-side)**: Business logic, API endpoints, user authentication aur data validation.\n` +
+          `  3. **Database**: Permanent data storage (User profiles, orders, transactions).\n\n` +
+          `• **MERN Stack kya hai aur kyu itna popular hai?**\n` +
+          `  MERN char modern technologies ka combination hai:\n` +
+          `  • **M - MongoDB**: Scalable NoSQL document database (JSON format me data store karta hai).\n` +
+          `  • **E - Express.js**: Fast, minimalist Node.js web server framework.\n` +
+          `  • **R - React.js**: High-performance interactive UI build karne wali library.\n` +
+          `  • **N - Node.js**: JavaScript runtime environment jo server par code execute karta hai.\n\n` +
+          `• **MERN Stack ke Fayde**:\n` +
+          `  ✓ **Single Language**: Frontend aur Backend dono me **JavaScript** use hota hai.\n` +
+          `  ✓ **Rapid Development**: Startups aur businesses ke liye fast development cycle.\n` +
+          `  ✓ **Massive Community & Scalability**: Million users tak scale karne ke liye ready.\n\n` +
+          `Arpit Rai ek specialist **Full Stack MERN Developer** hain jinhone Gym ERP aur GRS Jaise live platforms build kiye hain!`,
+        actions: [
+          { label: '🏋️ Arpit ka Gym MERN Demo dekhein', url: 'https://gym-management-platform.onrender.com', primary: true },
+          { label: '🏛️ GRS MERN Portal dekhein', url: 'https://grs-mern-client.onrender.com' },
+          { label: '💬 Arpit ko Full Stack Project ke liye hire karein', url: 'https://wa.me/919696725794?text=Hi%20Arpit,%20mujhe%20ek%20Full%20Stack%20MERN%20project%20banwana%20hai.' },
+        ],
+      }
+    } else {
+      return {
+        text: `💻 **Full Stack Engineering & The MERN Stack Architecture**:\n\n` +
+          `• **What is Full Stack Development?**\n` +
+          `  A Full Stack Engineer designs, implements, and maintains the entire 3-tier architecture of web software:\n` +
+          `  1. **Presentation Layer (Frontend)**: Dynamic UI/UX rendered in the client's browser.\n` +
+          `  2. **Application Layer (Backend)**: Business rules, authentication, security policies, and RESTful/GraphQL APIs.\n` +
+          `  3. **Data Layer (Database)**: Structured or document-based persistent storage.\n\n` +
+          `• **The MERN Stack Components**:\n` +
+          `  • **M — MongoDB**: Scalable, schema-flexible NoSQL document store with JSON-like BSON documents.\n` +
+          `  • **E — Express.js**: Lightweight Node.js routing and middleware framework.\n` +
+          `  • **R — React.js**: Declarative, component-based frontend library powering single-page applications (SPAs).\n` +
+          `  • **N — Node.js**: High-performance, asynchronous non-blocking I/O JavaScript runtime.\n\n` +
+          `• **Why Businesses Choose MERN**:\n` +
+          `  ✓ **Isomorphic JavaScript**: Engineering consistency across client and server with code reusability.\n` +
+          `  ✓ **JSON Everywhere**: Natural end-to-end data pipeline from database to UI without mapping friction.\n` +
+          `  ✓ **Speed to Market**: Accelerated MVP turnaround for web platforms, SaaS products, and portals.\n\n` +
+          `Arpit Rai specializes in building enterprise-grade MERN stack applications with verified live deployments!`,
+        actions: [
+          { label: '🏋️ Launch Live MERN Gym ERP', url: 'https://gym-management-platform.onrender.com', primary: true },
+          { label: '🏛️ Launch Live GRS Portal', url: 'https://grs-mern-client.onrender.com' },
+          { label: '💬 Hire Arpit for Full Stack Dev', url: 'https://wa.me/919696725794?text=Hi%20Arpit,%20I%20would%20like%20to%20hire%20you%20for%20a%20Full%20Stack%20project.', primary: true },
+        ],
+      }
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 4. FRONTEND VS BACKEND
+  // -------------------------------------------------------------
+  if (
+    q.includes('frontend vs backend') ||
+    q.includes('backend vs frontend') ||
+    q.includes('client side vs server') ||
+    q.includes('frontend kya') ||
+    q.includes('backend kya')
+  ) {
+    if (isHi) {
+      return {
+        text: `🌐 **Frontend vs Backend me kya Antar (Difference) hai?**:\n\n` +
+          `• **Frontend (Client-Side)**:\n` +
+          `  - **Kya hai**: Application ka wo chehra jise user browser ya phone me dekhta hai aur click karta hai.\n` +
+          `  - **Technologies**: HTML5, CSS3, JavaScript, React.js, Next.js, Tailwind CSS, Bootstrap.\n` +
+          `  - **Main Kaam**: Responsive layouts, user forms, animations, visual styling aur smooth user experience (UX).\n\n` +
+          `• **Backend (Server-Side)**:\n` +
+          `  - **Kya hai**: Application ka 'Dimaag' jo background server par chalta hai aur user ko direct nahi dikhta.\n` +
+          `  - **Technologies**: Node.js, Express.js, Python, Java, Go.\n` +
+          `  - **Main Kaam**: Business logic, security, password hashing, JWT authentication, payment processing aur database se baat karna.\n\n` +
+          `• **Yeh dono aapas me kaise communicate karte hain?**\n` +
+          `  Frontend aur Backend **REST APIs** ya **GraphQL** ke through JSON data exchange karte hain via HTTP requests (GET, POST, PUT, DELETE).\n\n` +
+          `Arpit dono frontend aur backend me fully proficient hain, jisse aapko alag-alag developers hire karne ki zaroorat nahi padti!`,
+        actions: [
+          { label: '⚡ REST API kya hoti hai?', query: 'What is a REST API?' },
+          { label: '🗄️ Database (SQL vs NoSQL) Guide', query: 'What is SQL vs NoSQL?' },
+          { label: '💬 Arpit se baat karein', url: 'https://wa.me/919696725794' },
+        ],
+      }
+    } else {
+      return {
+        text: `🌐 **Frontend vs Backend: Fundamental Differences**:\n\n` +
+          `• **Frontend (Client-Side)**:\n` +
+          `  - **Definition**: The visual interface and client-facing layer executed inside the end user's web browser.\n` +
+          `  - **Core Tech**: HTML5, CSS3, JavaScript, TypeScript, React.js, Next.js, Tailwind CSS.\n` +
+          `  - **Responsibilities**: UI rendering, input validation, state management, animations, and cross-device responsiveness.\n\n` +
+          `• **Backend (Server-Side)**:\n` +
+          `  - **Definition**: The underlying server architecture and computation engine running on remote servers or cloud containers.\n` +
+          `  - **Core Tech**: Node.js, Express.js, Python/Django, Go, Java Spring.\n` +
+          `  - **Responsibilities**: Authentication (JWT/OAuth), data authorization, payment processing, background jobs, and database CRUD.\n\n` +
+          `• **How They Connect**:\n` +
+          `  The frontend dispatches asynchronous HTTP/HTTPS network calls to Backend RESTful API or GraphQL endpoints, receiving serialized JSON payloads to update the view dynamically.\n\n` +
+          `Arpit provides end-to-end full stack execution across both layers seamlessly!`,
+        actions: [
+          { label: '⚡ What is a REST API?', query: 'What is a REST API?' },
+          { label: '🗄️ SQL vs NoSQL Breakdown', query: 'What is the difference between SQL and NoSQL databases?' },
+          { label: '💬 Hire Arpit for Full Stack', url: 'https://wa.me/919696725794', primary: true },
+        ],
+      }
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 5. WEB TECHNOLOGIES (HTML, CSS, JS, REACT, NEXT.JS, TYPESCRIPT)
+  // -------------------------------------------------------------
+  if (
+    q.includes('react') ||
+    q.includes('next.js') ||
+    q.includes('nextjs') ||
+    q.includes('javascript') ||
+    q.includes('typescript') ||
+    q.includes('html') ||
+    q.includes('css') ||
+    q.includes('web technology') ||
+    q.includes('web tech') ||
+    q.includes('spa') ||
+    q.includes('virtual dom')
+  ) {
+    if (isHi) {
+      return {
+        text: `🌐 **Modern Web Technologies Complete Guide**:\n\n` +
+          `• **HTML5, CSS3 & JavaScript (The Core Foundation)**:\n` +
+          `  - **HTML5**: Web page ka structure aur semantic markup (header, nav, section, article, footer).\n` +
+          `  - **CSS3**: Visual styling, Flexbox, CSS Grid layouts, media queries aur animations.\n` +
+          `  - **JavaScript (ES6+)**: Webpage me dynamic interactivity, async/await, API data fetching, aur client-side logic.\n\n` +
+          `• **React.js (Modern UI Standard)**:\n` +
+          `  - Meta dwara banai gayi declarative UI library.\n` +
+          `  - **Components**: Reusable blocks me code divide hota hai.\n` +
+          `  - **Virtual DOM**: Sirf change huye element ko update karta hai, jisse webpage super-fast load hota hai.\n` +
+          `  - **Hooks**: useState, useEffect, useContext se modern clean code likha jata hai.\n\n` +
+          `• **Next.js (React Framework for Production)**:\n` +
+          `  - Server-Side Rendering (SSR) aur Static Site Generation (SSG) provide karta hai.\n` +
+          `  - **Kyu zaroori hai?**: Google Search Console aur SEO rankings ke liye best hai.\n\n` +
+          `• **TypeScript**:\n` +
+          `  - JavaScript with static types—bugs ko runtime se pehle hi catch kar leta hai.\n\n` +
+          `Arpit Rai in sabhi modern frontend technologies me highly experienced hain!`,
+        actions: [
+          { label: '🚀 Arpit ka React Portfolio dekhein', url: '#featured', primary: true },
+          { label: '⚡ REST APIs & Backend guide', query: 'What is a REST API?' },
+          { label: '💬 WhatsApp par project discuss karein', url: 'https://wa.me/919696725794' },
+        ],
+      }
+    } else {
+      return {
+        text: `🌐 **Modern Web Technologies & Frontend Architecture**:\n\n` +
+          `• **The Core Web Trio**:\n` +
+          `  - **HTML5**: Semantic web architecture, accessibility (a11y), and proper document hierarchy.\n` +
+          `  - **CSS3**: Modern layout engines (Flexbox, CSS Grid), responsive design patterns, CSS variables, and fluid typography.\n` +
+          `  - **JavaScript (ES6+)**: Asynchronous execution, event loop, Promises, async/await, closures, and DOM manipulation.\n\n` +
+          `• **React.js — Industry Standard for Interactive UIs**:\n` +
+          `  - **Component-Driven**: Composable, reusable UI building blocks.\n` +
+          `  - **Virtual DOM (VDOM)**: High-speed reconciliation algorithm that minimizes costly direct browser DOM mutations.\n` +
+          `  - **React Hooks**: Elegant functional state and lifecycle management (` + '`useState`, `useEffect`, `useMemo`' + `).\n\n` +
+          `• **Next.js — The Enterprise React Framework**:\n` +
+          `  - Combines Server-Side Rendering (SSR), Static Site Generation (SSG), and API routes for optimal SEO and sub-second load times.\n\n` +
+          `• **TypeScript**:\n` +
+          `  - Strongly-typed superset of JavaScript preventing compile-time type errors and drastically improving maintainability.\n\n` +
+          `Arpit crafts high-performance web applications leveraging React, Next.js, and modern CSS standards!`,
+        actions: [
+          { label: '🚀 View Arpit’s React Projects', url: '#featured', primary: true },
+          { label: '⚡ Explore REST APIs & Backend', query: 'What is a REST API?' },
+          { label: '💬 Discuss Web Project on WhatsApp', url: 'https://wa.me/919696725794', primary: true },
+        ],
+      }
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 6. APIS, REST, GRAPHQL, WEBSOCKETS & HTTP
+  // -------------------------------------------------------------
+  if (
+    q.includes('api') ||
+    q.includes('rest') ||
+    q.includes('restful') ||
+    q.includes('graphql') ||
+    q.includes('websocket') ||
+    q.includes('http') ||
+    q.includes('https') ||
+    q.includes('status code')
+  ) {
+    if (isHi) {
+      return {
+        text: `⚡ **APIs, REST, WebSockets & HTTP Communication Guide**:\n\n` +
+          `• **API (Application Programming Interface) kya hoti hai?**\n` +
+          `  API ek bridge (pul) ki tarah hai jo do alag-alag software programs ko aapas me baat karne ki permission deti hai (e.g., Frontend React app se Backend Node.js server tak data mangwana).\n\n` +
+          `• **REST API (Representational State Transfer)**:\n` +
+          `  Web development ka sabse standard API design protocol:\n` +
+          `  - **GET**: Data fetch karna (e.g., product list dekhna).\n` +
+          `  - **POST**: Naya data create karna (e.g., user signup ya new order).\n` +
+          `  - **PUT / PATCH**: Existing data update karna (e.g., profile edit).\n` +
+          `  - **DELETE**: Data delete karna (e.g., item remove karna).\n\n` +
+          `• **REST vs GraphQL vs WebSockets**:\n` +
+          `  - **REST API**: Simple, reliable, standard caching ke saath.\n` +
+          `  - **GraphQL**: Client exact wahi fields mangta hai jo usse chahiye (no over-fetching).\n` +
+          `  - **WebSockets**: Bi-directional real-time connection—live chat apps aur stock tickers ke liye best.\n\n` +
+          `• **Important HTTP Status Codes**:\n` +
+          `  • 200 OK | 201 Created (Success)\n` +
+          `  • 400 Bad Request | 401 Unauthorized | 404 Not Found (Client Error)\n` +
+          `  • 500 Internal Server Error (Server Error)\n\n` +
+          `Arpit secure, documented aur fast REST APIs Node.js aur Express me build karte hain!`,
+        actions: [
+          { label: '🔒 JWT Authentication kya hai?', query: 'What is JWT Authentication?' },
+          { label: '🗄️ Database (SQL vs NoSQL) Guide', query: 'What is SQL vs NoSQL?' },
+          { label: '💬 WhatsApp par consult karein', url: 'https://wa.me/919696725794' },
+        ],
+      }
+    } else {
+      return {
+        text: `⚡ **APIs, RESTful Architecture, GraphQL & WebSockets Explained**:\n\n` +
+          `• **What is an API?**\n` +
+          `  An Application Programming Interface defines a contract of endpoints, methods, and data formats allowing independent systems to communicate securely over network protocols.\n\n` +
+          `• **RESTful Architecture (HTTP Verbs)**:\n` +
+          `  - **GET**: Retrieve resource state without side effects.\n` +
+          `  - **POST**: Create a new subordinate resource or trigger server execution.\n` +
+          `  - **PUT / PATCH**: Replace or partially mutate an existing resource.\n` +
+          `  - **DELETE**: Remove the specified resource.\n\n` +
+          `• **Architectural Comparison**:\n` +
+          `  - **REST**: Stateless, standardized HTTP semantics, highly cacheable with CDNs.\n` +
+          `  - **GraphQL**: Single endpoint query language eliminating over-fetching and under-fetching.\n` +
+          `  - **WebSockets**: Persistent, full-duplex TCP channels for real-time collaboration, chat systems, and live telemetry.\n\n` +
+          `• **Key HTTP Status Codes**:\n` +
+          `  - **2xx (Success)**: 200 (OK), 201 (Created), 204 (No Content)\n` +
+          `  - **4xx (Client Error)**: 400 (Bad Request), 401 (Unauthorized), 403 (Forbidden), 404 (Not Found)\n` +
+          `  - **5xx (Server Error)**: 500 (Internal Server Error), 502 (Bad Gateway), 503 (Service Unavailable)\n\n` +
+          `Arpit engineers robust, scalable RESTful API architectures with strict error handling and security controls!`,
+        actions: [
+          { label: '🔒 What is JWT Authentication?', query: 'What is JWT Authentication and how does it secure web apps?' },
+          { label: '🗄️ SQL vs NoSQL Database Guide', query: 'What is the difference between SQL and NoSQL databases?' },
+          { label: '💬 Consult API Architecture on WhatsApp', url: 'https://wa.me/919696725794', primary: true },
+        ],
+      }
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 7. DATABASES: SQL VS NOSQL, MONGODB, POSTGRESQL & REDIS
+  // -------------------------------------------------------------
+  if (
+    q.includes('database') ||
+    q.includes('sql') ||
+    q.includes('nosql') ||
+    q.includes('mongodb') ||
+    q.includes('mysql') ||
+    q.includes('postgresql') ||
+    q.includes('postgres') ||
+    q.includes('redis') ||
+    q.includes('acid')
+  ) {
+    if (isHi) {
+      return {
+        text: `🗄️ **Databases Complete Guide: SQL vs NoSQL**:\n\n` +
+          `• **Database kya hota hai?**\n` +
+          `  Data ko securely organize, store, update aur retrieve karne ka electronic system.\n\n` +
+          `• **SQL (Relational Databases)**:\n` +
+          `  - **Examples**: PostgreSQL, MySQL, SQLite.\n` +
+          `  - **Structure**: Tables, Rows aur Columns fixed schema ke saath.\n` +
+          `  - **Strengths**: Strict ACID transactions (Banking, Financial Ledgers, strict relational data).\n` +
+          `  - **Language**: Structured Query Language (SQL).\n\n` +
+          `• **NoSQL (Non-Relational Databases)**:\n` +
+          `  - **Examples**: MongoDB, Firebase, CouchDB.\n` +
+          `  - **Structure**: Flexible JSON-like documents (BSON).\n` +
+          `  - **Strengths**: Rapid schema changes, high horizontal scaling, fast read/write for dynamic applications.\n` +
+          `  - **Kyu MERN me MongoDB use hota hai?**: Kyunki JavaScript objects aur MongoDB documents 100% natural fit hain bina kisi complex ORM mapping ke.\n\n` +
+          `• **Redis (In-Memory Cache)**:\n` +
+          `  Data ko RAM me store karta hai jisse database queries microsecond speed me response deti hain (Session management aur rate-limiting ke liye best).\n\n` +
+          `Arpit aapke project ke nature ke hisaab se best database design aur indexing implement karte hain!`,
+        actions: [
+          { label: '🚀 Arpit ke MongoDB MERN Demos dekhein', url: '#featured', primary: true },
+          { label: '⚡ REST API Guide', query: 'What is a REST API?' },
+          { label: '💬 Database consultation WhatsApp par lein', url: 'https://wa.me/919696725794' },
+        ],
+      }
+    } else {
+      return {
+        text: `🗄️ **Database Engineering: SQL vs NoSQL Architectural Analysis**:\n\n` +
+          `• **Relational Databases (SQL)**:\n` +
+          `  - **Engines**: PostgreSQL, MySQL, MariaDB, SQLite.\n` +
+          `  - **Data Model**: Tabular relations, fixed schemas, foreign keys, and mathematical normalization.\n` +
+          `  - **Strengths**: Strict ACID compliance (Atomicity, Consistency, Isolation, Durability), complex multi-table joins, ideal for financial and mission-critical ledger systems.\n\n` +
+          `• **Document Databases (NoSQL - MongoDB)**:\n` +
+          `  - **Engines**: MongoDB, DynamoDB, CouchDB.\n` +
+          `  - **Data Model**: Semi-structured JSON/BSON document collections.\n` +
+          `  - **Strengths**: Dynamic schema flexibility, frictionless horizontal sharding, rapid prototype-to-production velocity, and native JavaScript data structure alignment.\n\n` +
+          `• **In-Memory Caching (Redis)**:\n` +
+          `  - Sub-millisecond key-value data storage in RAM for caching hot database queries, distributed session storage, and rate-limiting.\n\n` +
+          `• **Database Indexing**:\n` +
+          `  - Creating B-Tree or Hash indexes reduces search time from O(N) full-table scans to O(log N), drastically boosting production query speeds.\n\n` +
+          `Arpit architectures robust schemas with MongoDB and relational databases tailored to scale!`,
+        actions: [
+          { label: '🚀 Explore Live MongoDB Apps', url: '#featured', primary: true },
+          { label: '⚡ REST API Architecture Guide', query: 'What is a REST API?' },
+          { label: '💬 Inquire Database Consultation', url: 'https://wa.me/919696725794', primary: true },
+        ],
+      }
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 8. SOFTWARE ENGINEERING: GIT, AUTH/JWT, CORS, ARCHITECTURE
+  // -------------------------------------------------------------
+  if (
+    q.includes('git') ||
+    q.includes('jwt') ||
+    q.includes('authentication') ||
+    q.includes('auth') ||
+    q.includes('cors') ||
+    q.includes('mvc') ||
+    q.includes('software technology') ||
+    q.includes('software engineering') ||
+    q.includes('sdlc') ||
+    q.includes('testing') ||
+    q.includes('token')
+  ) {
+    if (isHi) {
+      return {
+        text: `🛠️ **Software Engineering, Git & Web Security Guide**:\n\n` +
+          `• **Git & GitHub (Version Control)**:\n` +
+          `  - Git ek distributed version control system hai jo code changes ko track karta hai.\n` +
+          `  - **GitHub**: Cloud platform jahan teams collaborate karti hain, pull requests review karti hain, aur open-source code host karti hain.\n\n` +
+          `• **JWT (JSON Web Token) Authentication**:\n` +
+          `  - Modern web apps me user login state secure rakhne ka stateless token mechanism.\n` +
+          `  - Token me teen parts hote hain: **Header**, **Payload** (User ID, Role), aur **Signature**.\n` +
+          `  - Client is token ko HTTP Authorization header me bhejta hai, server bina session database check kiye verify kar leta hai.\n\n` +
+          `• **CORS (Cross-Origin Resource Sharing)**:\n` +
+          `  - Browser security mechanism jo ek domain (e.g. localhost:3000) ko doosre domain (e.g. api.server.com) se data mangne se rokta hai agar server par CORS headers allow na ho.\n\n` +
+          `• **MVC Architecture (Model-View-Controller)**:\n` +
+          `  - **Model**: Database se deal karta hai.\n` +
+          `  - **View**: User interface (React/HTML).\n` +
+          `  - **Controller**: Business logic aur request handling.\n\n` +
+          `Arpit industry-standard clean code principles aur secure JWT auth patterns follow karte hain!`,
+        actions: [
+          { label: '🐙 Arpit ka GitHub Profile dekhein', url: 'https://github.com/arpitrai38', primary: true },
+          { label: '💻 Full Stack MERN Guide', query: 'What is Full Stack Development?' },
+          { label: '💬 WhatsApp par discuss karein', url: 'https://wa.me/919696725794' },
+        ],
+      }
+    } else {
+      return {
+        text: `🛠️ **Software Engineering, Version Control & Security Fundamentals**:\n\n` +
+          `• **Git & Version Control**:\n` +
+          `  - Distributed version control tracking commits, branches, merges, and resolving merge conflicts cleanly.\n` +
+          `  - GitHub hosts remote repositories, pull request reviews, issue trackers, and automated CI/CD pipelines.\n\n` +
+          `• **JWT (JSON Web Token) Authentication**:\n` +
+          `  - A compact, URL-safe stateless authentication standard containing Header, Payload, and Cryptographic Signature.\n` +
+          `  - Eliminates server session storage bottlenecks, enabling effortless horizontal scaling across microservices.\n\n` +
+          `• **CORS (Cross-Origin Resource Sharing)**:\n` +
+          `  - An essential HTTP-header based security mechanism enforced by web browsers to restrict resource fetching across disparate origins.\n\n` +
+          `• **Architectural Patterns (MVC & Clean Code)**:\n` +
+          `  - **Model**: Encapsulates data schema and business persistence.\n` +
+          `  - **View**: Handles UI rendering and user interactions.\n` +
+          `  - **Controller / Router**: Coordinates request orchestration, validation, and response delivery.\n\n` +
+          `Arpit implements hardened security configurations, clean git workflows, and robust authentication layers!`,
+        actions: [
+          { label: '🐙 Inspect Arpit’s GitHub Code', url: 'https://github.com/arpitrai38', primary: true },
+          { label: '💻 Full Stack MERN Overview', query: 'What is Full Stack Development?' },
+          { label: '💬 Discuss Security on WhatsApp', url: 'https://wa.me/919696725794', primary: true },
+        ],
+      }
+    }
+  }
+
+  // -------------------------------------------------------------
+  // 9. TECH STACK CONSULTING & ADVICE (Customer confused about tech)
   // -------------------------------------------------------------
   if (
     q.includes('confuse') ||
@@ -110,7 +652,7 @@ function getBotResponse(userQuery) {
   }
 
   // -------------------------------------------------------------
-  // 2. FEATURE RECOMMENDATIONS & ADD-ONS ADVISORY
+  // 10. FEATURE RECOMMENDATIONS & ADD-ONS ADVISORY
   // -------------------------------------------------------------
   if (
     q.includes('feature') ||
@@ -172,7 +714,7 @@ function getBotResponse(userQuery) {
   }
 
   // -------------------------------------------------------------
-  // 3. E-COMMERCE SPECIFIC GUIDANCE
+  // 11. E-COMMERCE SPECIFIC GUIDANCE
   // -------------------------------------------------------------
   if (
     q.includes('ecommerce') ||
@@ -225,50 +767,7 @@ function getBotResponse(userQuery) {
   }
 
   // -------------------------------------------------------------
-  // 4. MERN STACK & DATABASE CONSULTING (Why MERN? / Mongo vs SQL)
-  // -------------------------------------------------------------
-  if (
-    q.includes('why mern') ||
-    q.includes('mern kyu') ||
-    q.includes('mongodb or mysql') ||
-    q.includes('mongo vs sql') ||
-    q.includes('database kaun')
-  ) {
-    if (isHi) {
-      return {
-        text: `**MERN Stack & Database Recommendation**:\n\n` +
-          `• **MERN kyu best hai?**:\n` +
-          `  1. Frontend (React) aur Backend (Node) dono **JavaScript** me hote hain, jisse development super fast aur efficient hoti hai.\n` +
-          `  2. **MongoDB** flexible document structure provide karta hai, jisse naye features add karna bohot aasan hota hai.\n` +
-          `  3. Scalable aur startup-friendly architecture.\n\n` +
-          `• **MongoDB vs SQL/MySQL**:\n` +
-          `  - Agar aapka data dynamic hai (like users, products, memberships, activity logs) → **MongoDB** best hai.\n` +
-          `  - Agar strict banking transactions ya complex relations hain → **PostgreSQL/MySQL** best hai.`,
-        actions: [
-          { label: '🚀 Arpit ke MERN Demos dekhein', url: '#featured', primary: true },
-          { label: '💬 WhatsApp par discuss karein', url: 'https://wa.me/919696725794' },
-        ],
-      }
-    } else {
-      return {
-        text: `**Why Choose MERN Stack & Which Database to Pick**:\n\n` +
-          `• **Benefits of MERN Stack**:\n` +
-          `  1. **Unified JavaScript Language**: Both client and server run on JS, enabling rapid feature delivery.\n` +
-          `  2. **Component Architecture**: React offers rich interactive UIs and smooth single-page application (SPA) performance.\n` +
-          `  3. **High Throughput**: Node.js non-blocking I/O handles thousands of concurrent requests seamlessly.\n\n` +
-          `• **MongoDB vs SQL**:\n` +
-          `  - **MongoDB**: Ideal for rapid prototyping, ERP platforms, dynamic schemas, and high-velocity iterations.\n` +
-          `  - **PostgreSQL / SQL**: Best for strictly structured relational systems requiring complex multi-table ACID transactions.`,
-        actions: [
-          { label: '🚀 View Live MERN Projects', url: '#featured', primary: true },
-          { label: '💬 Discuss with Arpit on WhatsApp', url: 'https://wa.me/919696725794' },
-        ],
-      }
-    }
-  }
-
-  // -------------------------------------------------------------
-  // 5. GYM MANAGEMENT PLATFORM
+  // 12. GYM MANAGEMENT PLATFORM
   // -------------------------------------------------------------
   if (
     q.includes('gym') ||
@@ -311,7 +810,7 @@ function getBotResponse(userQuery) {
   }
 
   // -------------------------------------------------------------
-  // 6. GRS (GRIEVANCE REDRESSAL SYSTEM)
+  // 13. GRS (GRIEVANCE REDRESSAL SYSTEM)
   // -------------------------------------------------------------
   if (
     q.includes('grs') ||
@@ -351,7 +850,7 @@ function getBotResponse(userQuery) {
   }
 
   // -------------------------------------------------------------
-  // 7. iCODER BLOG & EMAIL VALIDATION
+  // 14. iCODER BLOG & EMAIL VALIDATION
   // -------------------------------------------------------------
   if (q.includes('icoder') || q.includes('blog')) {
     const desc = isHi
@@ -380,7 +879,7 @@ function getBotResponse(userQuery) {
   }
 
   // -------------------------------------------------------------
-  // 8. ALL PROJECTS
+  // 15. ALL PROJECTS
   // -------------------------------------------------------------
   if (
     q.includes('project') ||
@@ -426,7 +925,7 @@ function getBotResponse(userQuery) {
   }
 
   // -------------------------------------------------------------
-  // 9. CONTACT / HIRE / PHONE / WHATSAPP / EMAIL
+  // 16. CONTACT / PHONE / WHATSAPP / EMAIL
   // -------------------------------------------------------------
   if (
     q.includes('contact') ||
@@ -477,7 +976,7 @@ function getBotResponse(userQuery) {
   }
 
   // -------------------------------------------------------------
-  // 10. SOCIALS & GITHUB / LINKEDIN
+  // 17. SOCIALS & GITHUB / LINKEDIN
   // -------------------------------------------------------------
   if (
     q.includes('github') ||
@@ -499,7 +998,7 @@ function getBotResponse(userQuery) {
   }
 
   // -------------------------------------------------------------
-  // 11. PRICING & TIMELINE
+  // 18. PRICING & TIMELINE
   // -------------------------------------------------------------
   if (
     q.includes('price') ||
@@ -546,46 +1045,7 @@ function getBotResponse(userQuery) {
   }
 
   // -------------------------------------------------------------
-  // 12. FREELANCE SERVICES
-  // -------------------------------------------------------------
-  if (
-    q.includes('freelance') ||
-    q.includes('service') ||
-    q.includes('services') ||
-    q.includes('can you build') ||
-    q.includes('kya banate')
-  ) {
-    if (isHi) {
-      return {
-        text: `Arpit Rai yeh sari **Web Development Services** provide karte hain:\n\n` +
-          `• **Full-Stack Web Applications**: MERN stack portals, dashboards, ERPs aur custom platforms.\n` +
-          `• **Frontend UI/UX Engineering**: Modern, responsive React.js aur JavaScript websites.\n` +
-          `• **Backend & REST APIs**: Secure Node.js & Express servers, authentication aur database integration.\n` +
-          `• **Deployment & Hosting**: Render, Vercel, Netlify aur cloud setup.\n` +
-          `• **Bug Fixing & Speed Optimization**: Existing websites ko optimize aur modernise karna.`,
-        actions: [
-          { label: '💬 WhatsApp par project discuss karein', url: 'https://wa.me/919696725794?text=Hi%20Arpit,%20I%20have%20a%20project%20to%20build!', primary: true },
-          { label: '🚀 Live Projects Dekhein', url: '#featured' },
-        ],
-      }
-    } else {
-      return {
-        text: `Arpit Rai delivers end-to-end **Full-Stack Web Engineering Services**:\n\n` +
-          `• **Custom Web Applications**: Production-grade MERN portals, SaaS products, and ERP systems.\n` +
-          `• **Modern Frontend UI**: Lightning-fast, mobile-first responsive interfaces using React.js.\n` +
-          `• **Backend & RESTful APIs**: Scalable Node.js & Express server architectures with MongoDB/MySQL.\n` +
-          `• **Cloud Deployment**: Render, Vercel, and GitHub Pages continuous integration.\n` +
-          `• **Maintenance & Optimization**: Code refactoring, speed enhancement, and bug resolution.`,
-        actions: [
-          { label: '💬 Discuss Project on WhatsApp', url: 'https://wa.me/919696725794?text=Hi%20Arpit,%20I%20have%20a%20project%20to%20build!', primary: true },
-          { label: '🚀 Explore Featured Projects', url: '#featured' },
-        ],
-      }
-    }
-  }
-
-  // -------------------------------------------------------------
-  // 13. GREETINGS
+  // 19. GREETINGS
   // -------------------------------------------------------------
   if (
     q === 'hi' ||
@@ -599,58 +1059,62 @@ function getBotResponse(userQuery) {
   ) {
     if (isHi) {
       return {
-        text: `Namaste! 👋 Arpit Rai ke AI Assistant me aapka swagat hai.\n\nMain aapko **project technology guide karne**, **features suggest karne**, **live demos dikhane**, aur **freelance work & estimates** me help kar sakta hoon. Aap kis baare me jaanna chahte hain?`,
+        text: `Namaste! 👋 Main Arpit Rai ka AI Assistant hoon.\n\nMain aapko **AI, Cloud Computing, Fullstack, Web Technology, Software Engineering**, project ke liye **tech stack aur features recommend karne**, **live demos dikhane**, aur **freelance work** me madad kar sakta hoon. Aap kya jaanna chahte hain?`,
         actions: [
-          { label: '💡 Tech Stack Guide', query: 'I am confused which technology to use for my project' },
-          { label: '🎯 Features Suggestion', query: 'What features should I add to my project?' },
-          { label: '🚀 Live Demos', query: 'Show me your projects' },
-          { label: '📞 Contact Arpit', query: 'How can I contact Arpit?' },
+          { label: '🤖 AI & GenAI क्या है?', query: 'What is Artificial Intelligence and Generative AI?' },
+          { label: '☁️ Cloud Computing क्या है?', query: 'What is Cloud Computing and AWS?' },
+          { label: '💡 कौन सी Tech चुने?', query: 'I am confused which technology to use for my project' },
+          { label: '📞 Arpit से संपर्क करें', query: 'How can I contact Arpit directly?' },
         ],
       }
     } else {
       return {
-        text: `Hello! 👋 Welcome to Arpit Rai's Portfolio Assistant.\n\nI can help you **choose the ideal tech stack**, **recommend must-have features for your app**, **explore live project demos**, and **connect with Arpit for freelance hiring**. How can I assist you today?`,
+        text: `Hello! 👋 Welcome to Arpit Rai's AI Assistant.\n\nI can answer questions regarding **AI & GenAI, Cloud Computing, Full Stack & MERN, Web & Software Technologies**, guide your **project architecture and features**, showcase **live project demos**, and connect you with **Arpit for freelance hiring**. How can I help you today?`,
         actions: [
+          { label: '🤖 What is AI & GenAI?', query: 'What is Artificial Intelligence and Generative AI?' },
+          { label: '☁️ What is Cloud Computing?', query: 'What is Cloud Computing and AWS?' },
           { label: '💡 Tech Stack Advice', query: 'I am confused which technology to use for my project' },
-          { label: '🎯 Feature Ideas', query: 'What features should I add to my project?' },
-          { label: '🚀 Live Demos', query: 'Show me your projects' },
-          { label: '📞 Contact Arpit', query: 'How can I contact Arpit?' },
+          { label: '📞 Contact Arpit', query: 'How can I contact Arpit directly?' },
         ],
       }
     }
   }
 
   // -------------------------------------------------------------
-  // 14. FALLBACK / ADAPTIVE DEFAULT
+  // 20. FALLBACK / ADAPTIVE DEFAULT
   // -------------------------------------------------------------
   if (isHi) {
     return {
-      text: `Shukriya poochne ke liye! Arpit ke AI Assistant ke roop me, main aapki in cheezon me madad kar sakta hoon:\n\n` +
-        `• **Technology Guidance**: Project ke liye kaun sa stack (MERN, React, Node, SQL) best rahega.\n` +
-        `• **Feature Recommendations**: App me kaun se zaroori features aur add-ons hone chahiye.\n` +
-        `• **Live Demos**: Gym ERP, GRS Grievance Portal, iCoder Blog demos.\n` +
-        `• **Direct Contact**: Arpit se Phone, WhatsApp, ya Email par baat karein.\n\n` +
-        `Aap niche diye gaye option me se chunein ya apna sawal type karein!`,
+      text: `Shukriya poochne ke liye! Main in sabhi topics par aapki poori madad kar sakta hoon:\n\n` +
+        `• **AI & GenAI**: ChatGPT, Gemini, LLMs, AI integrations.\n` +
+        `• **Cloud Computing**: AWS, GCP, Docker, Serverless, Render, Vercel.\n` +
+        `• **Fullstack & MERN**: React, Node.js, Express.js, MongoDB.\n` +
+        `• **Web & Software Tech**: HTML, CSS, JavaScript, TypeScript, REST APIs, SQL vs NoSQL, Git.\n` +
+        `• **Project Planning**: Best tech stack aur value-add features.\n` +
+        `• **Arpit Rai Live Demos**: Gym ERP, GRS Grievance Portal, aur freelance hiring.\n\n` +
+        `Aap apna sawal type karein ya niche diye gaye option par tap karein!`,
       actions: [
-        { label: '💡 Tech Stack Guide', query: 'I am confused which technology to use for my project' },
-        { label: '🎯 Suggest Features', query: 'What features should I add to my project?' },
+        { label: '🤖 AI & GenAI Guide', query: 'What is Artificial Intelligence and Generative AI?' },
+        { label: '☁️ Cloud Computing Guide', query: 'What is Cloud Computing and AWS?' },
+        { label: '💡 Tech Stack Advice', query: 'I am confused which technology to use for my project' },
         { label: '💬 WhatsApp Chat', url: 'https://wa.me/919696725794', primary: true },
-        { label: '📞 Call +91 96967 25794', url: 'tel:+919696725794' },
       ],
     }
   } else {
     return {
-      text: `Thanks for asking! As Arpit Rai's AI Assistant, I can guide you with:\n\n` +
-        `• **Tech Stack Consulting**: Choosing the right technologies (MERN, React, Node, SQL/NoSQL).\n` +
-        `• **Feature Planning**: Recommending essential features and add-ons for your application.\n` +
-        `• **Live Project Demos**: Testing Gym ERP, GRS Portal, and iCoder Blog.\n` +
-        `• **Freelance Estimates & Direct Contact**: Reaching Arpit directly via Phone, WhatsApp, or Email.\n\n` +
-        `Please choose an option below or ask your question!`,
+      text: `Thanks for asking! As Arpit Rai's AI Assistant, I can assist you with:\n\n` +
+        `• **AI & GenAI**: LLMs, prompt engineering, integrating Gemini/ChatGPT into web applications.\n` +
+        `• **Cloud & DevOps**: AWS, GCP, Docker containers, CI/CD, Serverless, and Render/Vercel hosting.\n` +
+        `• **Full Stack & MERN**: End-to-end architecture with MongoDB, Express, React, and Node.js.\n` +
+        `• **Web & Software Engineering**: HTML5, CSS3, JavaScript, TypeScript, REST APIs, SQL vs NoSQL, Git.\n` +
+        `• **Project Tech & Feature Advisory**: Expert recommendations for your product ideas.\n` +
+        `• **Live Demos & Freelance Hire**: Direct phone/WhatsApp booking with Arpit.\n\n` +
+        `Feel free to ask any question or tap a recommendation below!`,
       actions: [
+        { label: '🤖 What is AI & GenAI?', query: 'What is Artificial Intelligence and Generative AI?' },
+        { label: '☁️ Cloud & DevOps Overview', query: 'What is Cloud Computing and AWS?' },
         { label: '💡 Tech Stack Guide', query: 'I am confused which technology to use for my project' },
-        { label: '🎯 Suggest Features', query: 'What features should I add to my project?' },
         { label: '💬 Chat on WhatsApp', url: 'https://wa.me/919696725794', primary: true },
-        { label: '📞 Call: +91 96967 25794', url: 'tel:+919696725794' },
       ],
     }
   }
@@ -661,17 +1125,21 @@ export default function Chatbot() {
   const [hasUnread, setHasUnread] = useState(true)
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  
+  // Language state: 'pending' (asking on initial open) | 'en' | 'hi'
+  const [selectedLang, setSelectedLang] = useState('pending')
+
+  // Initial welcome message prompting language choice
   const [messages, setMessages] = useState([
     {
-      id: 1,
+      id: 'welcome-lang-prompt',
       sender: 'bot',
-      text: `👋 **Hello / Namaste!** I'm Arpit Rai's AI Assistant.\n\nConfused about which technology to pick for your project? Need ideas on which features to add? Or looking to hire Arpit for freelance development? Ask me in **English or Hindi / Hinglish**!`,
+      text: `👋 **Welcome / नमस्ते!**\n\nI am Arpit Rai's AI Assistant. Before we get started, please select your preferred language:\n\nबातचीत शुरू करने के लिए कृपया अपनी पसंदीदा भाषा चुनें:`,
       time: 'Just now',
+      isLanguagePrompt: true,
       actions: [
-        { label: '💡 Tech Stack Guide', query: 'I am confused which technology to use for my project' },
-        { label: '🎯 Suggest Features', query: 'What features should I add to my project?' },
-        { label: '🏋️ Gym ERP Demo', query: 'Show me Gym Management Platform demo' },
-        { label: '📞 Contact Arpit', query: 'How can I contact Arpit directly?' },
+        { label: '🇺🇸 English', langChoice: 'en', primary: true },
+        { label: '🇮🇳 हिंदी / Hinglish', langChoice: 'hi', primary: true },
       ],
     },
   ])
@@ -689,9 +1157,66 @@ export default function Chatbot() {
     }
   }, [messages, isOpen])
 
+  // Select language explicitly (when user taps language button or toggles)
+  const handleSelectLanguage = (lang) => {
+    setSelectedLang(lang)
+    const isHindi = lang === 'hi'
+
+    const userMsg = {
+      id: Date.now(),
+      sender: 'user',
+      text: isHindi ? '🇮🇳 हिंदी / Hinglish' : '🇺🇸 English',
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    }
+
+    const botConfirmText = isHindi
+      ? `बहुत बढ़िया! 🇮🇳 आपने **हिंदी / Hinglish** चुनी है।\n\nमैं आपके इन सभी विषयों से जुड़े सवालों के जवाब दे सकता हूँ:\n• **AI & GenAI** (ChatGPT, Gemini, LLMs, AI इंटीग्रेशन)\n• **Cloud & DevOps** (AWS, Docker, Serverless, Render, Hosting)\n• **Full Stack & MERN** (React, Node.js, Express, MongoDB)\n• **Web Technologies** (HTML5, CSS3, JavaScript, TypeScript, Next.js)\n• **Software Engineering** (APIs, Git, JWT Authentication, SQL vs NoSQL)\n• **Project Planning** (Tech stack सलाह और Features गाइड)\n• **Arpit के प्रोजेक्ट्स और Freelance Services** (लाइव डेमो, प्राइसिंग और संपर्क)\n\nबताइए, आज आप किस विषय के बारे में जानना चाहते हैं?`
+      : `Awesome! 🇺🇸 You've selected **English**.\n\nI am equipped to answer all your questions across:\n• **AI & GenAI** (LLMs, ChatGPT, Gemini, Web Integration)\n• **Cloud & DevOps** (AWS, GCP, Docker, Serverless, Render/Vercel)\n• **Full Stack & MERN** (MongoDB, Express, React, Node.js)\n• **Web Technologies** (HTML5, CSS3, JavaScript, TypeScript, Next.js)\n• **Software Engineering** (APIs, Git, JWT Auth, SQL vs NoSQL)\n• **Project Advisory** (Tech stack consulting & must-have features)\n• **Arpit's Portfolio & Freelance Hiring** (Live demos, pricing & direct contact)\n\nWhat would you like to explore today?`
+
+    const confirmActions = isHindi
+      ? QUICK_PROMPTS_HI.slice(0, 4)
+      : QUICK_PROMPTS_EN.slice(0, 4)
+
+    const botMsg = {
+      id: Date.now() + 1,
+      sender: 'bot',
+      text: botConfirmText,
+      actions: confirmActions,
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    }
+
+    setMessages((prev) => [...prev, userMsg, botMsg])
+  }
+
+  // Toggle language from top header
+  const handleToggleLanguage = () => {
+    const nextLang = selectedLang === 'hi' ? 'en' : 'hi'
+    setSelectedLang(nextLang)
+
+    const switchMsg = {
+      id: Date.now(),
+      sender: 'bot',
+      text: nextLang === 'hi'
+        ? `🌐 भाषा बदलकर **हिंदी / Hinglish** कर दी गई है। आप कोई भी सवाल पूछ सकते हैं!`
+        : `🌐 Language switched to **English**. Ask me anything about AI, Cloud, Fullstack, or Web Tech!`,
+      actions: nextLang === 'hi' ? QUICK_PROMPTS_HI.slice(0, 4) : QUICK_PROMPTS_EN.slice(0, 4),
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    }
+
+    setMessages((prev) => [...prev, switchMsg])
+  }
+
   const handleSend = (textToSend) => {
     const query = typeof textToSend === 'string' ? textToSend : input
     if (!query || !query.trim()) return
+
+    // Auto-detect language if still pending
+    let currentLang = selectedLang
+    if (currentLang === 'pending') {
+      const detected = detectLanguage(query)
+      currentLang = detected === 'hi' ? 'hi' : 'en'
+      setSelectedLang(currentLang)
+    }
 
     const userMsg = {
       id: Date.now(),
@@ -704,9 +1229,9 @@ export default function Chatbot() {
     setInput('')
     setIsTyping(true)
 
-    // Simulate realistic AI deliberation time
+    // Simulate realistic AI response deliberation
     setTimeout(() => {
-      const botReply = getBotResponse(query)
+      const botReply = getBotResponse(query, currentLang)
       const botMsg = {
         id: Date.now() + 1,
         sender: 'bot',
@@ -727,13 +1252,18 @@ export default function Chatbot() {
   }
 
   const clearChat = () => {
+    setSelectedLang('pending')
     setMessages([
       {
         id: Date.now(),
         sender: 'bot',
-        text: `Chat restarted! Ask me about tech recommendations, project features, freelance hiring, or live demos. (English / Hindi dono me baat kar sakte hain!)`,
+        text: `👋 **Welcome / नमस्ते!**\n\nI am Arpit Rai's AI Assistant. Before we get started, please select your preferred language:\n\nबातचीत शुरू करने के लिए कृपया अपनी पसंदीदा भाषा चुनें:`,
         time: 'Just now',
-        actions: QUICK_PROMPTS.slice(0, 4),
+        isLanguagePrompt: true,
+        actions: [
+          { label: '🇺🇸 English', langChoice: 'en', primary: true },
+          { label: '🇮🇳 हिंदी / Hinglish', langChoice: 'hi', primary: true },
+        ],
       },
     ])
   }
@@ -757,13 +1287,15 @@ export default function Chatbot() {
     })
   }
 
+  const activeQuickPrompts = selectedLang === 'hi' ? QUICK_PROMPTS_HI : QUICK_PROMPTS_EN
+
   return (
     <div className="ai-chatbot-root">
       {/* Floating Launcher Button */}
       {!isOpen && (
         <div className="chatbot-launcher-wrapper">
           <div className="chatbot-tooltip">
-            <span>Ask Arpit's AI ✦</span>
+            <span>Ask Arpit's AI ✦ (EN/HI)</span>
           </div>
           <button
             className="chatbot-launcher-btn"
@@ -791,16 +1323,27 @@ export default function Chatbot() {
               </div>
               <div>
                 <h4>Arpit's AI Assistant <span className="badge-ai">PRO</span></h4>
-                <p>🟢 Active · Tech & Project Advisor (EN/HI)</p>
+                <p>🟢 Active · Tech, AI & Cloud Advisor</p>
               </div>
             </div>
 
             <div className="header-actions">
+              {/* Language Switcher Button */}
+              <button
+                className="header-btn lang-toggle-btn"
+                onClick={handleToggleLanguage}
+                title={selectedLang === 'hi' ? 'Switch to English' : 'हिंदी / Hinglish में बदलें'}
+                aria-label="Switch Language"
+                id="chatbot-lang-toggle"
+              >
+                {selectedLang === 'hi' ? '🇮🇳 HI' : '🇺🇸 EN'}
+              </button>
               <button
                 className="header-btn"
                 onClick={clearChat}
                 title="Restart Chat"
                 aria-label="Restart Chat"
+                id="chatbot-restart-btn"
               >
                 ↺
               </button>
@@ -809,6 +1352,7 @@ export default function Chatbot() {
                 onClick={() => setIsOpen(false)}
                 title="Close Chat"
                 aria-label="Close Chat"
+                id="chatbot-close-btn"
               >
                 ✕
               </button>
@@ -817,7 +1361,7 @@ export default function Chatbot() {
 
           {/* Quick Prompts Bar */}
           <div className="quick-prompts-bar">
-            {QUICK_PROMPTS.map((prompt, idx) => (
+            {activeQuickPrompts.map((prompt, idx) => (
               <button
                 key={idx}
                 className="quick-chip"
@@ -835,24 +1379,38 @@ export default function Chatbot() {
                 {msg.sender === 'bot' && (
                   <img src={BOT_AVATAR} alt="Bot" className="bubble-avatar" />
                 )}
-                <div className={`chat-bubble ${msg.sender}`}>
+                <div className={`chat-bubble ${msg.sender} ${msg.isLanguagePrompt ? 'lang-prompt-bubble' : ''}`}>
                   <div className="bubble-text">{renderFormattedText(msg.text)}</div>
 
-                  {/* Action Buttons inside Bot message */}
+                  {/* Action or Language Selection Buttons inside Bot message */}
                   {msg.actions && msg.actions.length > 0 && (
-                    <div className="bubble-actions">
-                      {msg.actions.map((act, actIdx) =>
-                        act.url ? (
-                          <a
-                            key={actIdx}
-                            href={act.url}
-                            target={act.url.startsWith('#') || act.url.startsWith('tel:') ? '_self' : '_blank'}
-                            rel="noopener noreferrer"
-                            className={`action-pill ${act.primary ? 'primary' : ''}`}
-                          >
-                            {act.label} ↗
-                          </a>
-                        ) : (
+                    <div className={`bubble-actions ${msg.isLanguagePrompt ? 'lang-selection-row' : ''}`}>
+                      {msg.actions.map((act, actIdx) => {
+                        if (act.langChoice) {
+                          return (
+                            <button
+                              key={actIdx}
+                              className={`action-pill lang-choice-pill ${act.langChoice === 'hi' ? 'lang-hi' : 'lang-en'}`}
+                              onClick={() => handleSelectLanguage(act.langChoice)}
+                            >
+                              {act.label}
+                            </button>
+                          )
+                        }
+                        if (act.url) {
+                          return (
+                            <a
+                              key={actIdx}
+                              href={act.url}
+                              target={act.url.startsWith('#') || act.url.startsWith('tel:') ? '_self' : '_blank'}
+                              rel="noopener noreferrer"
+                              className={`action-pill ${act.primary ? 'primary' : ''}`}
+                            >
+                              {act.label} ↗
+                            </a>
+                          )
+                        }
+                        return (
                           <button
                             key={actIdx}
                             className="action-pill query-pill"
@@ -861,7 +1419,7 @@ export default function Chatbot() {
                             {act.label}
                           </button>
                         )
-                      )}
+                      })}
                     </div>
                   )}
 
@@ -889,7 +1447,7 @@ export default function Chatbot() {
             <div className="input-wrapper">
               <input
                 type="text"
-                placeholder="Ask in English ya Hindi (e.g. 'konsi tech use kare?')..."
+                placeholder={selectedLang === 'hi' ? "हिंदी या English में पूछें (e.g. 'AI kya hai', 'konsi tech use kare')..." : "Ask in English or Hindi (e.g. 'What is Cloud', 'MERN stack')..."}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -901,12 +1459,13 @@ export default function Chatbot() {
                 onClick={() => handleSend()}
                 disabled={!input.trim()}
                 aria-label="Send message"
+                id="chatbot-send-btn"
               >
                 <span>➤</span>
               </button>
             </div>
             <div className="footer-branding">
-              <span>Tech Advisory · Feature Planning · Direct Freelance Connect</span>
+              <span>Web & Software Tech · AI & Cloud · Freelance Advisory</span>
             </div>
           </div>
         </div>

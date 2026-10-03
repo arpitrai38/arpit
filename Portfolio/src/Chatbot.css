@@ -238,6 +238,30 @@
   transition: all 0.2s ease;
 }
 
+.header-btn.lang-toggle-btn {
+  width: auto;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  background: rgba(20, 52, 98, 0.85);
+  border-color: rgba(56, 189, 248, 0.45);
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-btn.lang-toggle-btn:hover {
+  background: linear-gradient(135deg, rgba(0, 188, 255, 0.3), rgba(121, 65, 255, 0.3));
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
 .header-btn:hover {
   background: rgba(24, 60, 114, 0.9);
   color: #fff;
@@ -426,6 +450,53 @@
 .action-pill.primary:hover {
   filter: brightness(1.15);
   box-shadow: 0 5px 16px rgba(0, 188, 255, 0.65);
+}
+
+/* Language Selection Prompt in Welcome Bubble */
+.chat-bubble.lang-prompt-bubble {
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  background: rgba(14, 38, 76, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 188, 255, 0.2);
+}
+
+.bubble-actions.lang-selection-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.action-pill.lang-choice-pill {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  background: rgba(18, 48, 92, 0.85);
+  color: #f1f7ff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.action-pill.lang-choice-pill.lang-en:hover {
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
+  color: #ffffff;
+}
+
+.action-pill.lang-choice-pill.lang-hi:hover {
+  background: linear-gradient(135deg, #f97316, #7941ff);
+  border-color: #fb923c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5);
+  color: #ffffff;
 }
 
 /* Typing animation */
