@@ -5,35 +5,46 @@ import './Chatbot.css'
 const BOT_AVATAR = arpitPhoto
 
 // English Quick Prompts Bar
+// English Quick Prompts Bar (Project Work recommendations first, Tech definitions at the end)
 const QUICK_PROMPTS_EN = [
+  // 1. Project-related recommendations first:
+  { label: '💡 Tech Stack Advice', query: 'I am confused which technology to use for my project' },
+  { label: '🎯 Suggest Features', query: 'What features should I add to my web project?' },
+  { label: '🏋️ Gym ERP Demo', query: 'Show me Gym Management Platform demo' },
+  { label: '🏛️ GRS Portal Demo', query: 'Show me Grievance Redressal System' },
+  { label: '👤 Who is Arpit Rai?', query: 'Who is Arpit Rai and what is his background?' },
+  { label: '💼 Freelance Services', query: 'What freelance services do you offer?' },
+  { label: '💰 Pricing & Timeline', query: 'What is your freelance pricing and timeline?' },
+  { label: '📞 Contact Arpit', query: 'How can I contact Arpit directly?' },
+  // 2. Tech education recommendations at the end of the row:
   { label: '🤖 What is AI & GenAI?', query: 'What is Artificial Intelligence and Generative AI?' },
   { label: '☁️ Cloud Computing & AWS', query: 'What is Cloud Computing and AWS?' },
   { label: '💻 Full Stack & MERN', query: 'What is Full Stack Development and MERN Stack?' },
-  { label: '💡 Tech Stack Advice', query: 'I am confused which technology to use for my project' },
-  { label: '🎯 Suggest Features', query: 'What features should I add to my web project?' },
   { label: '🌐 Frontend vs Backend', query: 'What is the difference between Frontend and Backend?' },
   { label: '🗄️ SQL vs NoSQL', query: 'What is the difference between SQL and NoSQL databases?' },
   { label: '⚡ What is REST API?', query: 'What is a REST API and how does it work?' },
   { label: '🔒 What is JWT Auth?', query: 'What is JWT Authentication and how does it secure web apps?' },
-  { label: '🏋️ Gym ERP Demo', query: 'Show me Gym Management Platform demo' },
-  { label: '🏛️ GRS Portal Demo', query: 'Show me Grievance Redressal System' },
-  { label: '📞 Contact Arpit', query: 'How can I contact Arpit directly?' },
 ]
 
-// Hindi / Hinglish Quick Prompts Bar
+// Hindi / Hinglish Quick Prompts Bar (Project Work recommendations first, Tech definitions at the end)
 const QUICK_PROMPTS_HI = [
+  // 1. Project-related recommendations first:
+  { label: '💡 कौन सी Tech चुने?', query: 'Main confuse hoon ki apne project ke liye kaun si technology use karu' },
+  { label: '🎯 Features क्या Add करें?', query: 'Mere project me kaun se best features add karne chahiye?' },
+  { label: '🏋️ Gym ERP लाइव डेमो', query: 'Gym Management Platform ka live demo dikhao' },
+  { label: '🏛️ GRS पोर्टल डेमो', query: 'GRS Grievance Redressal System ka demo dikhao' },
+  { label: '👤 Arpit Rai कौन हैं?', query: 'Arpit Rai kaun hain aur unki skills kya hain?' },
+  { label: '💼 फ्रीलांस सर्विसेज', query: 'Arpit kaun-kaun si web development services dete hain?' },
+  { label: '💰 प्रोजेक्ट खर्च व समय', query: 'Project banwane me kitna kharch aur samay lagega?' },
+  { label: '📞 Arpit से संपर्क करें', query: 'Arpit se directly kaise contact karein?' },
+  // 2. Tech education recommendations at the end of the row:
   { label: '🤖 AI & GenAI क्या है?', query: 'AI aur Generative AI kya hota hai aur kaise kaam karta hai?' },
   { label: '☁️ Cloud Computing क्या है?', query: 'Cloud Computing kya hai aur AWS/Render kaise use karte hain?' },
   { label: '💻 Full Stack & MERN क्या है?', query: 'Full Stack development aur MERN stack kya hota hai?' },
-  { label: '💡 कौन सी Tech चुने?', query: 'Main confuse hoon ki apne project ke liye kaun si technology use karu' },
-  { label: '🎯 Features क्या Add करें?', query: 'Mere project me kaun se best features add karne chahiye?' },
   { label: '🌐 Frontend vs Backend', query: 'Frontend aur Backend me kya antar hai?' },
   { label: '🗄️ SQL vs NoSQL डेटाबेस', query: 'SQL aur NoSQL database me kya difference hai aur MongoDB kyu use kare?' },
   { label: '⚡ REST API क्या होती है?', query: 'REST API kya hoti hai aur frontend-backend kaise connect hote hain?' },
   { label: '🔒 JWT Auth क्या है?', query: 'JWT Authentication kya hota hai?' },
-  { label: '🏋️ Gym ERP लाइव डेमो', query: 'Gym Management Platform ka live demo dikhao' },
-  { label: '🏛️ GRS पोर्टल डेमो', query: 'GRS Grievance Redressal System ka demo dikhao' },
-  { label: '📞 Arpit से संपर्क करें', query: 'Arpit se directly kaise contact karein?' },
 ]
 
 // Language detector: detects if user is asking in Hindi/Hinglish vs English
@@ -1156,19 +1167,19 @@ function getBotResponse(userQuery, activeLang = 'en') {
       return {
         text: `Namaste! 👋 Main Arpit Rai ka AI Assistant hoon.\n\nMain aapko **AI, Cloud Computing, Fullstack, Web Technology, Software Engineering**, project ke liye **tech stack aur features recommend karne**, **live demos dikhane**, aur **freelance work** me madad kar sakta hoon. Aap kya jaanna chahte hain?`,
         actions: [
-          { label: '🤖 AI & GenAI क्या है?', query: 'What is Artificial Intelligence and Generative AI?' },
-          { label: '☁️ Cloud Computing क्या है?', query: 'What is Cloud Computing and AWS?' },
           { label: '💡 कौन सी Tech चुने?', query: 'I am confused which technology to use for my project' },
+          { label: '🎯 Features क्या Add करें?', query: 'What features should I add to my web project?' },
+          { label: '🚀 लाइव प्रोजेक्ट डेमो', query: 'Show me your projects' },
           { label: '📞 Arpit से संपर्क करें', query: 'How can I contact Arpit directly?' },
         ],
       }
     } else {
       return {
-        text: `Hello! 👋 Welcome to Arpit Rai's AI Assistant.\n\nI can answer questions regarding **AI & GenAI, Cloud Computing, Full Stack & MERN, Web & Software Technologies**, guide your **project architecture and features**, showcase **live project demos**, and connect you with **Arpit for freelance hiring**. How can I help you today?`,
+        text: `Hello! 👋 Welcome to Arpit Rai's AI Assistant.\n\nI can help you **plan your project**, **recommend the best tech stack and features**, **explore live project demos**, and answer any questions regarding **AI, Cloud, Fullstack, and Web Development**. How can I help you today?`,
         actions: [
-          { label: '🤖 What is AI & GenAI?', query: 'What is Artificial Intelligence and Generative AI?' },
-          { label: '☁️ What is Cloud Computing?', query: 'What is Cloud Computing and AWS?' },
           { label: '💡 Tech Stack Advice', query: 'I am confused which technology to use for my project' },
+          { label: '🎯 Suggest Features', query: 'What features should I add to my web project?' },
+          { label: '🚀 Live Project Demos', query: 'Show me your projects' },
           { label: '📞 Contact Arpit', query: 'How can I contact Arpit directly?' },
         ],
       }
@@ -1181,34 +1192,34 @@ function getBotResponse(userQuery, activeLang = 'en') {
   if (isHi) {
     return {
       text: `Shukriya poochne ke liye! Main in sabhi topics par aapki poori madad kar sakta hoon:\n\n` +
+        `• **Project Planning**: Best tech stack aur value-add features.\n` +
+        `• **Arpit Rai Live Demos**: Gym ERP, GRS Grievance Portal, aur freelance hiring.\n` +
         `• **AI & GenAI**: ChatGPT, Gemini, LLMs, AI integrations.\n` +
         `• **Cloud Computing**: AWS, GCP, Docker, Serverless, Render, Vercel.\n` +
         `• **Fullstack & MERN**: React, Node.js, Express.js, MongoDB.\n` +
-        `• **Web & Software Tech**: HTML, CSS, JavaScript, TypeScript, REST APIs, SQL vs NoSQL, Git.\n` +
-        `• **Project Planning**: Best tech stack aur value-add features.\n` +
-        `• **Arpit Rai Live Demos**: Gym ERP, GRS Grievance Portal, aur freelance hiring.\n\n` +
+        `• **Web & Software Tech**: HTML, CSS, JavaScript, TypeScript, REST APIs, SQL vs NoSQL, Git.\n\n` +
         `Aap apna sawal type karein ya niche diye gaye option par tap karein!`,
       actions: [
-        { label: '🤖 AI & GenAI Guide', query: 'What is Artificial Intelligence and Generative AI?' },
-        { label: '☁️ Cloud Computing Guide', query: 'What is Cloud Computing and AWS?' },
-        { label: '💡 Tech Stack Advice', query: 'I am confused which technology to use for my project' },
+        { label: '💡 कौन सी Tech चुने?', query: 'I am confused which technology to use for my project' },
+        { label: '🎯 Features क्या Add करें?', query: 'What features should I add to my web project?' },
+        { label: '🚀 लाइव प्रोजेक्ट डेमो', query: 'Show me your projects' },
         { label: '💬 WhatsApp Chat', url: 'https://wa.me/919696725794', primary: true },
       ],
     }
   } else {
     return {
       text: `Thanks for asking! As Arpit Rai's AI Assistant, I can assist you with:\n\n` +
+        `• **Project Tech & Feature Advisory**: Expert recommendations for your product ideas.\n` +
+        `• **Live Demos & Freelance Hire**: Direct phone/WhatsApp booking with Arpit.\n` +
         `• **AI & GenAI**: LLMs, prompt engineering, integrating Gemini/ChatGPT into web applications.\n` +
         `• **Cloud & DevOps**: AWS, GCP, Docker containers, CI/CD, Serverless, and Render/Vercel hosting.\n` +
         `• **Full Stack & MERN**: End-to-end architecture with MongoDB, Express, React, and Node.js.\n` +
-        `• **Web & Software Engineering**: HTML5, CSS3, JavaScript, TypeScript, REST APIs, SQL vs NoSQL, Git.\n` +
-        `• **Project Tech & Feature Advisory**: Expert recommendations for your product ideas.\n` +
-        `• **Live Demos & Freelance Hire**: Direct phone/WhatsApp booking with Arpit.\n\n` +
+        `• **Web & Software Engineering**: HTML5, CSS3, JavaScript, TypeScript, REST APIs, SQL vs NoSQL, Git.\n\n` +
         `Feel free to ask any question or tap a recommendation below!`,
       actions: [
-        { label: '🤖 What is AI & GenAI?', query: 'What is Artificial Intelligence and Generative AI?' },
-        { label: '☁️ Cloud & DevOps Overview', query: 'What is Cloud Computing and AWS?' },
-        { label: '💡 Tech Stack Guide', query: 'I am confused which technology to use for my project' },
+        { label: '💡 Tech Stack Advice', query: 'I am confused which technology to use for my project' },
+        { label: '🎯 Suggest Features', query: 'What features should I add to my web project?' },
+        { label: '🚀 Live Project Demos', query: 'Show me your projects' },
         { label: '💬 Chat on WhatsApp', url: 'https://wa.me/919696725794', primary: true },
       ],
     }
@@ -1265,8 +1276,8 @@ export default function Chatbot() {
     }
 
     const botConfirmText = isHindi
-      ? `बहुत बढ़िया! 🇮🇳 आपने **हिंदी / Hinglish** चुनी है।\n\nमैं आपके इन सभी विषयों से जुड़े सवालों के जवाब दे सकता हूँ:\n• **AI & GenAI** (ChatGPT, Gemini, LLMs, AI इंटीग्रेशन)\n• **Cloud & DevOps** (AWS, Docker, Serverless, Render, Hosting)\n• **Full Stack & MERN** (React, Node.js, Express, MongoDB)\n• **Web Technologies** (HTML5, CSS3, JavaScript, TypeScript, Next.js)\n• **Software Engineering** (APIs, Git, JWT Authentication, SQL vs NoSQL)\n• **Project Planning** (Tech stack सलाह और Features गाइड)\n• **Arpit के प्रोजेक्ट्स और Freelance Services** (लाइव डेमो, प्राइसिंग और संपर्क)\n\nबताइए, आज आप किस विषय के बारे में जानना चाहते हैं?`
-      : `Awesome! 🇺🇸 You've selected **English**.\n\nI am equipped to answer all your questions across:\n• **AI & GenAI** (LLMs, ChatGPT, Gemini, Web Integration)\n• **Cloud & DevOps** (AWS, GCP, Docker, Serverless, Render/Vercel)\n• **Full Stack & MERN** (MongoDB, Express, React, Node.js)\n• **Web Technologies** (HTML5, CSS3, JavaScript, TypeScript, Next.js)\n• **Software Engineering** (APIs, Git, JWT Auth, SQL vs NoSQL)\n• **Project Advisory** (Tech stack consulting & must-have features)\n• **Arpit's Portfolio & Freelance Hiring** (Live demos, pricing & direct contact)\n\nWhat would you like to explore today?`
+      ? `बहुत बढ़िया! 🇮🇳 आपने **हिंदी / Hinglish** चुनी है।\n\nमैं आपके प्रोजेक्ट वर्क और वेब डेवलपमेंट से जुड़े हर काम में मदद कर सकता हूँ:\n• **Project Planning**: Kaun si technology use karein aur kaun se features add karein\n• **Arpit के लाइव प्रोजेक्ट्स**: Gym ERP, GRS Grievance Portal, iCoder Blog\n• **Freelance Services & Pricing**: Project estimates, timeline aur direct call/WhatsApp\n• **Technical Q&A**: AI & GenAI, Cloud Computing, Full Stack & Web Tech\n\nबताइए, आज आप अपने प्रोजेक्ट के बारे में क्या डिस्कस करना चाहते हैं?`
+      : `Awesome! 🇺🇸 You've selected **English**.\n\nI am ready to assist you end-to-end with your project development:\n• **Project Planning**: Choosing the right tech stack & essential feature add-ons\n• **Live Demos**: Gym Management Platform, GRS Portal, and iCoder Blog\n• **Freelancing & Hiring**: Work with Arpit Rai, get pricing estimates & connect directly\n• **Technical Knowledge**: AI & GenAI, Cloud & DevOps, Full Stack MERN & Web Tech\n\nWhat project idea would you like to discuss today?`
 
     const confirmActions = isHindi
       ? QUICK_PROMPTS_HI.slice(0, 4)
