@@ -69,6 +69,101 @@ function getBotResponse(userQuery, activeLang = 'en') {
   const isHi = detected === 'hi' || (activeLang === 'hi' && detected !== 'en')
 
   // -------------------------------------------------------------
+  // 0. WHO IS ARPIT RAI / ABOUT DEVELOPER (arpit kaun hai, who is arpit, etc.)
+  // -------------------------------------------------------------
+  if (
+    q.includes('arpit kaun') ||
+    q.includes('arpit kon') ||
+    q.includes('arpit koun') ||
+    q.includes('arpit kon h') ||
+    q.includes('arpit kaun h') ||
+    q.includes('who is arpit') ||
+    q.includes('who is arpit rai') ||
+    q.includes('about arpit') ||
+    q.includes('arpit ke bare') ||
+    q.includes('arpit ke baare') ||
+    q.includes('arpit ki details') ||
+    q.includes('arpit details') ||
+    q.includes('arpit profile') ||
+    q.includes('arpit bio') ||
+    q.includes('developer kaun') ||
+    q.includes('developer kon') ||
+    q.includes('who is developer') ||
+    q.includes('who is the developer') ||
+    q.includes('about developer') ||
+    q.includes('tell me about arpit') ||
+    q.includes('tell me about developer') ||
+    q.includes('who built this') ||
+    q.includes('who made this') ||
+    q.includes('who created this') ||
+    q.includes('kisne banaya') ||
+    q.includes('kisne banaye') ||
+    q.includes('kisne banayi') ||
+    q.includes('kiska portfolio') ||
+    q.includes('creator kaun') ||
+    q.includes('owner kaun') ||
+    q === 'arpit' ||
+    q === 'arpit rai' ||
+    (q.includes('arpit') && (q.includes('kya karta') || q.includes('kya karte') || q.includes('hai kaun') || q.includes('info') || q.includes('background') || q.includes('experience') || q.includes('education') || q.includes('skills'))) ||
+    q.includes('who are you') ||
+    q.includes('tum kaun') ||
+    q.includes('aap kaun') ||
+    q.includes('tell me about yourself')
+  ) {
+    if (isHi) {
+      return {
+        text: `👤 **Arpit Rai kaun hain? (About Arpit Rai)**:\n\n` +
+          `**Arpit Rai** ek passionate **Full Stack Web Developer** aur **Freelance Software Engineer** hain jo modern, fast aur high-performance web applications build karte hain.\n\n` +
+          `• **Primary Skills & Expertise**:\n` +
+          `  - **Frontend**: React.js, Next.js, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Bootstrap, Responsive UI/UX.\n` +
+          `  - **Backend**: Node.js, Express.js, RESTful APIs, JWT Authentication, Secure Server Architectures.\n` +
+          `  - **Databases**: MongoDB, MySQL, PostgreSQL, Redis.\n` +
+          `  - **Cloud & Deployment**: Render, Vercel, Docker, GitHub Actions, AWS S3.\n\n` +
+          `• **Arpit ke Featured Live Projects**:\n` +
+          `  1. **Gym Management Platform**: Full-fledged MERN multi-tenant ERP system (Render par live).\n` +
+          `  2. **GRS (Grievance Redressal System)**: Citizen aur student complaints & resolution management portal.\n` +
+          `  3. **College ERP System**: Enterprise academic management system.\n` +
+          `  4. **iCoder**: Tech tutorials & blogging website (Bootstrap 5).\n` +
+          `  5. **Email Validation Tool**: Real-time email syntax verification tool.\n\n` +
+          `• **Work Philosophy**:\n` +
+          `  *"More than code. It's about impact."* — Arpit hamesha practical functionality, clean architecture aur client business growth ko priority dete hain.\n\n` +
+          `Aap unse freelance projects ke liye direct WhatsApp ya Call par connect kar sakte hain!`,
+        actions: [
+          { label: '📞 Call Arpit: +91 96967 25794', url: 'tel:+919696725794', primary: true },
+          { label: '💬 WhatsApp Chat Kholein', url: 'https://wa.me/919696725794?text=Hi%20Arpit,%20mujhe%20aapke%20projects%20aur%20freelance%20work%20ke%20bare%20me%20baat%20karni%20hai.', primary: true },
+          { label: '🚀 Live Projects Dekhein', url: '#featured' },
+          { label: '💼 LinkedIn Profile', url: 'https://www.linkedin.com/in/arpit-rai-002951292' },
+        ],
+      }
+    } else {
+      return {
+        text: `👤 **Who is Arpit Rai? (Developer Profile)**:\n\n` +
+          `**Arpit Rai** is a skilled **Full Stack Web Developer** and **Freelance Software Engineer** specializing in modern, high-performance web applications and enterprise platforms.\n\n` +
+          `• **Core Technical Expertise**:\n` +
+          `  - **Frontend**: React.js, Next.js, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Responsive Web Design.\n` +
+          `  - **Backend**: Node.js, Express.js, RESTful APIs, JWT Authentication, Server-Side Logic.\n` +
+          `  - **Databases**: MongoDB, MySQL, PostgreSQL, Redis.\n` +
+          `  - **Cloud & DevOps**: Render, Vercel, Docker, GitHub Actions, AWS S3.\n\n` +
+          `• **Featured Flagship Projects**:\n` +
+          `  1. **Gym Management Platform**: Multi-tenant MERN ERP with automated renewals, billing, and membership tracking.\n` +
+          `  2. **GRS (Grievance Redressal System)**: Role-based online grievance resolution portal.\n` +
+          `  3. **College ERP System**: Centralized academic & administrative management system.\n` +
+          `  4. **iCoder**: Responsive coding and technology blogging website.\n` +
+          `  5. **Email Validation (iValidate)**: Lightweight email verification utility.\n\n` +
+          `• **Philosophy & Work Ethic**:\n` +
+          `  *"More than code. It's about impact."* — Arpit emphasizes practical usability, clean maintainable code, and high-velocity delivery for clients and businesses.\n\n` +
+          `Looking to build a web application or collaborate with Arpit? Connect directly below!`,
+        actions: [
+          { label: '📞 Direct Call: +91 96967 25794', url: 'tel:+919696725794', primary: true },
+          { label: '💬 Chat on WhatsApp', url: 'https://wa.me/919696725794?text=Hi%20Arpit,%20I%20would%20like%20to%20discuss%20a%20project.', primary: true },
+          { label: '🚀 Explore Featured Projects', url: '#featured' },
+          { label: '💼 LinkedIn Profile', url: 'https://www.linkedin.com/in/arpit-rai-002951292' },
+        ],
+      }
+    }
+  }
+
+  // -------------------------------------------------------------
   // 1. AI (ARTIFICIAL INTELLIGENCE), GENAI, LLMS & MACHINE LEARNING
   // -------------------------------------------------------------
   if (
