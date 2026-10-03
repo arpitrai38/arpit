@@ -1447,7 +1447,7 @@ export default function Chatbot() {
             <div className="input-wrapper">
               <input
                 type="text"
-                placeholder={selectedLang === 'hi' ? "हिंदी या English में पूछें (e.g. 'AI kya hai', 'konsi tech use kare')..." : "Ask in English or Hindi (e.g. 'What is Cloud', 'MERN stack')..."}
+                placeholder={selectedLang === 'hi' ? "अपना सवाल यहाँ लिखें..." : "Ask your question here..."}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
