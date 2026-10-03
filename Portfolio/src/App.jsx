@@ -1,4 +1,6 @@
+import React, { useState } from 'react'
 import arpitPhoto from './assets/arpit-rai.jpg'
+import Chatbot from './Chatbot'
 import './App.css'
 
 const work = [
@@ -20,57 +22,153 @@ const work = [
 ]
 
 const featuredProjects = [
-{
-number: '01',
-title: 'Online Grievance Management System',
-description:
-'A digital system for submitting, tracking and managing grievances through a structured and transparent workflow.',
-features: [
-'Secure user registration and login',
-'Online grievance submission',
-'Complaint categories and status tracking',
-'Admin dashboard and organized grievance records',
-],
-tech: 'Web Development · Database Management',
-type: 'grievance',
-},
-{
-number: '02',
-title: 'College ERP System',
-description:
-'A centralized web platform designed to manage important academic and administrative activities in a college.',
-features: [
-'Student and faculty management',
-'Course and attendance management',
-'Fees, results and academic records',
-'Role-based access and centralized data management',
-],
-tech: 'Web Development · Database Management',
-type: 'erp',
-},
+  {
+    number: '01',
+    title: 'Gym Management Platform',
+    badge: 'MERN Stack · Live ERP',
+    description:
+      'A comprehensive multi-tenant gym & fitness center management system featuring member registration, membership tracking, automated renewals, payment processing, and attendance operations.',
+    features: [
+      'Member registration, profiles & workout plan management',
+      'Membership plan tracking, automated expiry & renewals',
+      'Payment processing, fee records & revenue summaries',
+      'Attendance tracking & administrative operation controls',
+    ],
+    tech: 'React.js · Node.js · Express.js · MongoDB',
+    type: 'gym',
+    liveUrl: 'https://gym-management-platform.onrender.com',
+    codeUrl: 'https://github.com/arpitrai38/gms-frontened',
+  },
+  {
+    number: '02',
+    title: 'GRS – Grievance Redressal System',
+    badge: 'MERN Stack · Live Portal',
+    description:
+      'A structured digital system for submitting, tracking, and resolving grievances with role-based authentication, category routing, and admin resolution workflows.',
+    features: [
+      'Secure user registration, authentication & role access',
+      'Online grievance filing with categorized complaint routing',
+      'Real-time complaint status tracking (In Review, Resolved)',
+      'Admin dashboard with organized grievance records & analytics',
+    ],
+    tech: 'React.js · Node.js · Express.js · MongoDB',
+    type: 'grievance',
+    liveUrl: 'https://grs-mern-client.onrender.com',
+    codeUrl: 'https://github.com/arpitrai38/MERN-GRS',
+  },
+  {
+    number: '03',
+    title: 'College ERP System',
+    badge: 'Enterprise Architecture',
+    description:
+      'A centralized enterprise web platform engineered to manage academic and administrative activities, student records, fee reconciliation, and departmental data.',
+    features: [
+      'Student and faculty management',
+      'Course and attendance management',
+      'Fees, results and academic records',
+      'Role-based access and centralized data management',
+    ],
+    tech: 'React.js · Node.js · Express.js · Database Systems',
+    type: 'erp',
+    liveUrl: null,
+    codeUrl: 'https://github.com/arpitrai38',
+  },
 ]
 
 function App() {
-return (
-<div className="page dark"> <div className="canvas">
+  const [isNavOpen, setIsNavOpen] = useState(false)
 
-    <header className="topbar">
-      <a className="logo" href="#home">
-        <span>AR</span> Arpit Rai
-      </a>
+  return (
+    <div className="page dark">
+      <div className="canvas">
 
-      <nav>
-        <a className="selected" href="#home">Home</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#about">About</a>
-      </nav>
+        <header className="topbar">
+          <a className="logo" href="#home" onClick={() => setIsNavOpen(false)}>
+            <span>AR</span> Arpit Rai
+          </a>
 
-      <div className="top-actions">
-        <a className="contact-button" href="#contact">
-          Contact me
-        </a>
-      </div>
-    </header>
+          <nav className="desktop-nav">
+            <a className="selected" href="#home">Home</a>
+            <a href="#featured">Featured</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#about">About</a>
+          </nav>
+
+          <div className="top-actions">
+            <a className="contact-button desktop-contact-btn" href="#contact">
+              Contact me
+            </a>
+
+            {/* Hamburger Menu Button */}
+            <button
+              className={`hamburger-btn ${isNavOpen ? 'open' : ''}`}
+              onClick={() => setIsNavOpen(!isNavOpen)}
+              aria-label={isNavOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isNavOpen}
+              id="hamburger-btn"
+            >
+              <span className="hamburger-bar bar-1"></span>
+              <span className="hamburger-bar bar-2"></span>
+              <span className="hamburger-bar bar-3"></span>
+            </button>
+          </div>
+        </header>
+
+        {/* Mobile Navigation Drawer */}
+        <div className={`mobile-nav-overlay ${isNavOpen ? 'active' : ''}`}>
+          <div className="mobile-nav-backdrop" onClick={() => setIsNavOpen(false)}></div>
+          <aside className="mobile-nav-drawer" aria-label="Mobile Navigation">
+            <div className="mobile-drawer-header">
+              <a className="logo" href="#home" onClick={() => setIsNavOpen(false)}>
+                <span>AR</span> Arpit Rai
+              </a>
+              <button
+                className="mobile-drawer-close"
+                onClick={() => setIsNavOpen(false)}
+                aria-label="Close menu"
+              >
+                ✕
+              </button>
+            </div>
+
+            <nav className="mobile-drawer-links">
+              <a href="#home" onClick={() => setIsNavOpen(false)}>
+                <i>✦</i> Home
+              </a>
+              <a href="#featured" onClick={() => setIsNavOpen(false)}>
+                <i>🚀</i> Featured Projects
+              </a>
+              <a href="#portfolio" onClick={() => setIsNavOpen(false)}>
+                <i>💼</i> Selected Work
+              </a>
+              <a href="#about" onClick={() => setIsNavOpen(false)}>
+                <i>👤</i> About Me
+              </a>
+              <a
+                href="#contact"
+                className="mobile-drawer-contact-btn"
+                onClick={() => setIsNavOpen(false)}
+              >
+                Contact Me ↗
+              </a>
+            </nav>
+
+            <div className="mobile-drawer-footer">
+              <p>FIND ME ONLINE</p>
+              <div className="mobile-drawer-socials">
+                <a href="https://github.com/arpitrai38" target="_blank" rel="noreferrer">
+                  GitHub ↗
+                </a>
+                <a href="https://www.linkedin.com/in/arpit-rai-002951292" target="_blank" rel="noreferrer">
+                  LinkedIn ↗
+                </a>
+                <a href="tel:+919696725794">
+                  +91 96967 25794
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
 
     <main>
 
@@ -269,65 +367,182 @@ return (
         <div className="project-grid">
 
           <article className="project-card p-one">
-            <div className="project-mock">
-              <span>SARTHI</span>
+            <a
+              href="https://arpitrai38.github.io/iCoder/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mock-link"
+              title="Open iCoder live website"
+            >
+              <div className="project-mock">
+                <span>ICODER · BLOG</span>
 
-              <b>
-                Explore the world.
-                <br />
-                Travel your way.
-              </b>
+                <b>
+                  Code. Learn.
+                  <br />
+                  Tech Articles & Blog.
+                </b>
 
-              <i></i>
-              <i></i>
-              <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </a>
+
+            <h3>
+              <a
+                href="https://arpitrai38.github.io/iCoder/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-title-link"
+                title="Open iCoder live website"
+              >
+                iCoder – Tech Blogging Website <span className="title-arrow">↗</span>
+              </a>
+            </h3>
+            <p>HTML · CSS · Bootstrap</p>
+
+            <div className="card-actions">
+              <a
+                href="https://arpitrai38.github.io/iCoder/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-live-btn"
+                title="Open iCoder live demo"
+              >
+                <i className="live-indicator"></i> Live Demo ↗
+              </a>
+              <a
+                href="https://github.com/arpitrai38/iCoder"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-code-btn"
+                title="View iCoder source code on GitHub"
+              >
+                Code ↗
+              </a>
             </div>
-
-            <h3>Sarthi – Travel Website</h3>
-            <p>HTML · CSS · JavaScript</p>
           </article>
 
           <article className="project-card p-two">
-            <div className="project-mock">
-              <span>AMARSADHANA</span>
+            <a
+              href="https://gym-management-platform.onrender.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mock-link"
+              title="Open Gym Management Platform live demo"
+            >
+              <div className="project-mock">
+                <span>GYM PLATFORM</span>
 
-              <b>
-                Support.
-                <br />
-                Connect. Grow.
-              </b>
+                <b>
+                  Train. Manage.
+                  <br />
+                  Track & Renew.
+                </b>
 
-              <i></i>
-              <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </a>
+
+            <h3>
+              <a
+                href="https://gym-management-platform.onrender.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-title-link"
+                title="Open Gym Management Platform live demo"
+              >
+                Gym Management Platform <span className="title-arrow">↗</span>
+              </a>
+            </h3>
+            <p>MERN Stack · Full Stack ERP</p>
+
+            <div className="card-actions">
+              <a
+                href="https://gym-management-platform.onrender.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-live-btn"
+                title="Open Gym Management live demo"
+              >
+                <i className="live-indicator"></i> Live Demo ↗
+              </a>
+              <a
+                href="https://github.com/arpitrai38/gms-frontened"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-code-btn"
+                title="View Gym Management source code on GitHub"
+              >
+                Code ↗
+              </a>
             </div>
-
-            <h3>Amarsadhana</h3>
-            <p>Support Platform</p>
           </article>
 
           <article className="project-card p-three">
-            <div className="project-mock">
-              <span>EMAIL CHECK</span>
+            <a
+              href="https://arpitrai38.github.io/Email-Validation/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mock-link"
+              title="Open Email Validation Tool live demo"
+            >
+              <div className="project-mock">
+                <span>EMAIL CHECK</span>
 
-              <b>
-                Validate.
-                <br />
-                Verify.
-              </b>
+                <b>
+                  Validate.
+                  <br />
+                  Verify & Clean.
+                </b>
 
-              <i></i>
-              <i></i>
-              <i></i>
-            </div>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+            </a>
 
-            <h3>Email Validation Tool</h3>
+            <h3>
+              <a
+                href="https://arpitrai38.github.io/Email-Validation/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-title-link"
+                title="Open Email Validation Tool live demo"
+              >
+                Email Validation Tool <span className="title-arrow">↗</span>
+              </a>
+            </h3>
             <p>HTML · CSS · JavaScript</p>
+
+            <div className="card-actions">
+              <a
+                href="https://arpitrai38.github.io/Email-Validation/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-live-btn"
+                title="Open Email Validation live demo"
+              >
+                <i className="live-indicator"></i> Live Demo ↗
+              </a>
+              <a
+                href="https://github.com/arpitrai38/Email-Validation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-code-btn"
+                title="View Email Validation source code on GitHub"
+              >
+                Code ↗
+              </a>
+            </div>
           </article>
 
         </div>
       </section>
 
-      <section className="featured-projects">
+      <section className="featured-projects" id="featured">
         <div className="featured-heading">
           <p>04 / FEATURED PROJECTS</p>
 
@@ -347,23 +562,63 @@ return (
             >
               <div className="featured-visual">
 
-                {project.type === 'grievance' ? (
+                {project.type === 'gym' && (
                   <>
-                    <span>GMS</span>
+                    <div className="visual-top">
+                      <span>GYM / PLATFORM ERP</span>
+                      {project.liveUrl && (
+                        <span className="live-pill">
+                          <i className="pulse-dot"></i> Live Demo
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="gym-badge">
+                      <div className="gym-icon">🏋️</div>
+                      <div>
+                        <b>Member Portal & ERP</b>
+                        <small>Active Memberships · Live Tracking</small>
+                      </div>
+                    </div>
+
+                    <div className="gym-stats-row">
+                      <small>Cardio & Strength</small>
+                      <small>Auto-Renew</small>
+                      <small>Fee Billing</small>
+                    </div>
+                  </>
+                )}
+
+                {project.type === 'grievance' && (
+                  <>
+                    <div className="visual-top">
+                      <span>GRS / GRIEVANCE PORTAL</span>
+                      {project.liveUrl && (
+                        <span className="live-pill">
+                          <i className="pulse-dot"></i> Live Demo
+                        </span>
+                      )}
+                    </div>
 
                     <div className="complaint-row">
                       <i></i>
-                      <b>Submit grievance</b>
+                      <b>Submit & Track Grievance</b>
                     </div>
 
                     <div className="status-row">
                       <small>In review</small>
                       <small>Resolved</small>
+                      <small>Role Access</small>
                     </div>
                   </>
-                ) : (
+                )}
+
+                {project.type === 'erp' && (
                   <>
-                    <span>COLLEGE / ERP</span>
+                    <div className="visual-top">
+                      <span>COLLEGE / ERP SYSTEM</span>
+                      <span className="erp-pill">Enterprise</span>
+                    </div>
 
                     <div className="erp-side">
                       <b>ERP</b>
@@ -382,11 +637,30 @@ return (
               </div>
 
               <div className="featured-content">
-                <p className="project-number">
-                  PROJECT {project.number}
-                </p>
+                <div className="project-header-row">
+                  <p className="project-number">
+                    PROJECT {project.number}
+                  </p>
+                  {project.badge && (
+                    <span className="project-badge">{project.badge}</span>
+                  )}
+                </div>
 
-                <h3>{project.title}</h3>
+                <h3>
+                  {project.liveUrl ? (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-title-link"
+                      title={`Open ${project.title} live demo in a new tab`}
+                    >
+                      {project.title} <span className="title-arrow">↗</span>
+                    </a>
+                  ) : (
+                    project.title
+                  )}
+                </h3>
 
                 <p>{project.description}</p>
 
@@ -401,9 +675,54 @@ return (
                 </p>
 
                 <div className="project-actions">
-                  <a href="#contact">Live Demo ↗</a>
-                  <a href="#contact">View Project</a>
-                  <a href="#contact">View Code ↗</a>
+                  {project.liveUrl ? (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="action-live-btn"
+                      id={`live-demo-${project.number}`}
+                      title={`Open ${project.title} live demo in a new tab`}
+                    >
+                      <i className="live-indicator"></i>
+                      Live Demo ↗
+                    </a>
+                  ) : (
+                    <a
+                      href="#contact"
+                      className="action-contact-btn"
+                      id={`contact-demo-${project.number}`}
+                    >
+                      Request Demo ↗
+                    </a>
+                  )}
+
+                  {project.liveUrl ? (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="action-sub-btn"
+                    >
+                      View Live App
+                    </a>
+                  ) : (
+                    <a href="#contact" className="action-sub-btn">
+                      View Details
+                    </a>
+                  )}
+
+                  {project.codeUrl && (
+                    <a
+                      href={project.codeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="action-sub-btn"
+                      title={`View ${project.title} source code on GitHub`}
+                    >
+                      View Code ↗
+                    </a>
+                  )}
                 </div>
               </div>
             </article>
@@ -471,6 +790,7 @@ return (
       </div>
     </footer>
 
+    <Chatbot />
   </div>
 </div>
 
